@@ -1,6 +1,6 @@
 package kr.co.bitcamp;
 
-public class AfterThreadRunnable {
+public class AfterThreadRunnable implements Runnalbe {
 	//Field
 	private String name;
 	

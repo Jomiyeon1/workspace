@@ -1,12 +1,15 @@
 package february.miyeon22;
 
 public class Prob01{
+	
+	public static void main(String[] args) {
 	Book[] booklist = new Book[5];
 
 	Book book1 = new Book("Java Program", 25000);
 	Book book2 = new Book("JSP Program", 15000);
 	Book book3 = new Book("SQL Fundamentals", 30000);
 	Book book4 = new Book("JDBC Program", 28000);
+	Book book5 = new Book();
 	book5.setTitle("EJB Program");
 	book5.setPrice(34000);
 

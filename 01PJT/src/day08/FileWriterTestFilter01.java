@@ -35,7 +35,7 @@ public class FileWriterTestFilter01{
 		//==> 사본파일 이름 만들기
 		copyFileName = fileName + "_copy";
 		//==> Data를 Write할 수 있는 BufferedWriter 생성
-		bw = new BufferedWriter(new FileWriter(copyFileName));
+		//bw = new BufferedWriter(new FileWriter(copyFileName));
 
 		// read / writer하는 while문
 		String source = null;
