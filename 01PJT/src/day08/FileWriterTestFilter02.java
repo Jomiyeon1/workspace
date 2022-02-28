@@ -25,8 +25,8 @@ public class FileWriterTestFilter02{
 		//File에 글을 쓰기위한 FileWriter 및 BufferWriter생성
 		//FileWriter fw = new FileWriter("test.txt");
 		//bw = new BufferedReader(fw);
-		bw = new BufferedWriter(new FileWriter("test.txt")); //==> API확인
-		//bw = new  BufferedWriter(new FileWriter("test.txt", true)); //==> API확인
+		//bw = new BufferedWriter(new FileWriter("test.txt")); //==> API확인
+		bw = new  BufferedWriter(new FileWriter("test.txt", true)); //==> API확인
 
 		System.out.println("파일에 저장하실 글을 입력하세요.");
 		while(true){
@@ -34,7 +34,7 @@ public class FileWriterTestFilter02{
 			if(str.equals("끝")){
 				break;
 			}
-			bw.write(str, 0, str.length()); //==> API확인
+			bw.write(str, 2, str.length()-2); //==> API확인
 			bw.newLine(); //==> API확인(줄바꾸기)
 		}
 		bw.flush(); //flush 잊지 말것!

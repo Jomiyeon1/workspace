@@ -17,12 +17,12 @@ public class BufferedReaderTest{
 		int readCount = 0;
 
 		//SinkStream ==> 말단에서 단순 입출력만 담당
-		FileReader fr = new FileReader(args[0]);
+		//FileReader fr = new FileReader(args[0]);
 		//FilterStream ==> 추가적인 기능을 제공
-		BufferedReader br = new BufferedReader(fr);
+		//BufferedReader br = new BufferedReader(fr);
 
 		//==>위 두 line 과 아래를 비교하자.
-		//BufferedReader br = new BufferedReader(new FileReader(args[0]));
+		BufferedReader br = new BufferedReader(new FileReader(args[0]));
 
 		String oneLine = null;
 
@@ -38,6 +38,6 @@ public class BufferedReaderTest{
 
 		//Stream close
 		br.close();
-		fr.close();
+		//fr.close();
 	}//end of main
 }//end of class

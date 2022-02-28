@@ -41,7 +41,7 @@ public class SmartPhone extends CellPhone{
 			
 		}else {
 			
-			setTotalFee(getTotalCallTime() * geteePerCallTime());
+			super.calculationTotalFee();
 		}
 		return getTotalFee();
 	}

@@ -4,22 +4,21 @@ public class Prob01 {
 	//method
 	private static String[] stringSplit(String str1, String str2) {
 		String[] str = new String[str1.length()] ;
-
+		
 
 		for(int i = 0; i < str1.length(); i++) {
+			int count = 0;
 			char c = str1.charAt(i);
 			String a = Character.toString(c);
 			if(a == str2) {
 				count++;
-				continue;
 			}else{
 				for(int j = 0; j < i; j++) {
 				str[j] += a;
-				
 				}
 			}
 			System.out.println("");
-		} 
+		} //end of for i
 		
 		return str;
 	}

@@ -18,7 +18,7 @@ public class FileWriterTestFilter01{
 		
 		//필요객체 Stream/String 인스턴스 declaration
 		BufferedReader br = null;
-		BufferedReader bw = null;
+		BufferedWriter bw = null;
 		String fileName = "";
 		String copyFileName = "";
 		
@@ -35,12 +35,13 @@ public class FileWriterTestFilter01{
 		//==> 사본파일 이름 만들기
 		copyFileName = fileName + "_copy";
 		//==> Data를 Write할 수 있는 BufferedWriter 생성
-		//bw = new BufferedWriter(new FileWriter(copyFileName));
+		bw = new BufferedWriter(new FileWriter(copyFileName));
 
 		// read / writer하는 while문
 		String source = null;
 		while( (source = br.readLine() ) != null ){
 			bw.write(source);
+			bw.newLine();
 			readCount++;
 		}
 		bw.flush();

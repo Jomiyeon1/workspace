@@ -1,7 +1,7 @@
 package kr.co.bitcamp;
 //Thread 우선 순위 제어
 
-public class PriorityThread {
+public class PriorityThread extends Thread{
 	
 	//Field
 	private String name;
