@@ -1,0 +1,71 @@
+//===================================//
+1. DML :: DELETR : TABLE RECORD 삭제
+
+//==> title 장군이 RECORD 삭제
+DELETR FROM emp_test
+/* DELETE emp_test */
+WHERE title = '장군';
+
+SELECT * FROM emp_test;
+
+COMMT;
+
+//===================================//
+//==> id 6 이상 RECORD 삭제 ==> 변경 후 ROLLBACK
+
+DELETE FROM emp_test
+WHERE id >= 6;
+
+SELECT * FROM emp_test;
+
+ROLLBACK;
+
+SELECT * FROM emp_test;
+
+
+//===================================//
+//==> id 5이상 6이하 RECORD 삭제 ==> 변경 후 ROLLBACK
+
+DELETE FROM emp_test
+WHERE id >= 5 AND id <= 6;
+
+SELECT * FROM emp_test;
+
+ROLLBACK;
+
+SELECT * FROM emp_test;
+
+//==> 위의 DELETE문 조건과 아래의 조건 비교
+DELETE FROM emp_test
+WHERE id = 5 OR id = 6 ;
+
+SELECT * FROM emp_test;
+
+COMMIT;
+
+SELECT * FROM emp_test;
+
+//===================================//
+//==> 아래와 같은 실수(?) 없도록..
+DELETE FROM emp_test
+WHERE id = 2 OR id = 3 ;
+
+SELECT * FROM emp_test;
+
+ROLLBACK;
+
+SELECT * FROM emp_test;
+
+//==> 아래는 의미를 갖는가??
+DELETE FROM emp_test;
+WHERE id = 2 AND id = 3 ;
+
+//===================================//
+//==> DELETE시 조건절이 없다는 의미는??
+DELETR FROM emp_test;
+
+SELECT * FROM emp_test;
+
+ROLLBACK;
+
+SELECT * FROM emp_test;
