@@ -10,8 +10,13 @@ public class Prob01 {
 			int count = 0;
 			char c = str1.charAt(i);
 			String a = Character.toString(c);
+			// 추출한 char가 str2와 같다면, count++
 			if(a == str2) {
 				count++;
+				// str2와 같은 문자가 나왔다면?
+				if(count > 0) {
+					
+				}
 			}else{
 				for(int j = 0; j < i; j++) {
 				str[j] += a;
