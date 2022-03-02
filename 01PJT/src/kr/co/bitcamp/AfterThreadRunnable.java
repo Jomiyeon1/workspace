@@ -1,6 +1,6 @@
 package kr.co.bitcamp;
 
-public class AfterThreadRunnable implements Runnalbe {
+public class AfterThreadRunnable implements Runnable {
 	//Field
 	private String name;
 	
@@ -16,15 +16,15 @@ public class AfterThreadRunnable implements Runnalbe {
 	public void run() {
 		for(int i = 0; i < 100; i++) {
 			System.out.println(name + " : " + i);
-		/*
-		 *sleep() ==> API 확인
-		 *try{
-		 *	Thread.sleep(100);
-		 *}catch(InterruptesException e){
-		 *	System.out.println(e);
-		 *}
-		 * 
-		 * */
+		
+		// sleep()  ==> API 확인
+		 try{
+		 	Thread.sleep(100);
+		 }catch(InterruptedException e){
+		 	System.out.println(e);
+		 }
+		  
+		  
 		
 		}
 	}
