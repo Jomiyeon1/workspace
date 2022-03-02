@@ -21,8 +21,8 @@ public class Prob01 {
 				String temp = c+"";
 				byte[] encoding = temp.getBytes();
 				//변환한 값 출력을 위해 value에 담는다.
-				for(int j = 0; j < temp.length(); j++) {
-					value += "%"+Integer.toHexString(encoding[j]).toUpperCase().substring(6,8);
+				for(int j = 0; j < encoding.length; j++) {
+					value += "%"+Integer.toHexString(encoding[j]).toUpperCase().substring(6);
 			
 				}
 				 
