@@ -9,8 +9,8 @@ CREATE TABLE emp_test(
 	name		VARCHAR2(15),
 	salary		NUMBER(7,2),
 	title		VARCHAR2(15)	DEFAULT		'»ç¿ø',
-	in_date		DATE			DEFAULT		SYSDATE,
-	dept_name	VARCHAR2(15)
+	in_data		DATE			DEFAULT		SYSDATE,
+	dept_naem	VARCHAR2(15)
 );
 
 //==========================
