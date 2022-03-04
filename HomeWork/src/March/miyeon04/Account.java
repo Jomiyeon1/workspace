@@ -65,13 +65,15 @@ public class Account {
 	
 	//method====================================================
 	public int withdraw(int money) throws Exception{
-		if( balance < creditLineLimit || balance < money) {
-//			try {
-				Exception e = new Exception("잔고부족 출금불가입니다.");
-//			}catch (Exception e) {
-				System.out.print(e.getMessage());
-//			}
-		}else
+		if( creditLine && money > (creditLineLimit + balance) ) {
+//			
+				throw new Exception("잔고부족 출금불가입니다.");
+//		
+//		
+		}else if(!creditLine && balance < money) {
+			
+			throw new Exception("잔고부족 출금불가입니다.");
+		}
 			
 			//=================
 			balance -= money;

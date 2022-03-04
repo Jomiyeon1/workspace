@@ -11,7 +11,7 @@ public class Prob01 {
 			System.out.println("[계좌정보]" + account01);
 			
 			System.out.println("\n 1. " + account01.getAccountNo() + " 계좌 200000 출금요청");
-			account01.withdraw(2000000);
+			account01.withdraw(200000);
 			System.out.println("[계좌정보]" + account01);
 			
 			System.out.println("\n 2. " + account01.getAccountNo() + " 계좌 100000 입금요청");
