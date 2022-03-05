@@ -1,10 +1,27 @@
 package March.miyeon02;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Prob02 {
 	
 	public static String getParameter(String url, String paramName) {
+		Map<String, String> map = new HashMap<>(); 
+		int index = url.indexOf('?');
+		String str = url.substring((index+1),url.length());
+		String[] temp = str.split("&");
 		
-		return null;
+		for(int i = 0; i <temp.length; i++) {
+			if(temp[i].startsWith(paramName)) {
+				String temp2[] = temp[i].split("=");
+				//String temp2[] = temp[i+1].split("=");
+				map.put(temp2[0], temp2[1]);
+				//System.out.println(temp2[i-1]);			
+			}
+		}	
+		String result = map.get(paramName);
+		
+		return result;
 	}//end of method
 	
 	//main

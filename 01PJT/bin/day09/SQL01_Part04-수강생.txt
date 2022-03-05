@@ -1,0 +1,80 @@
+//===================================
+1.DML :: INSERT : TABLE RECORD 입력
+//===================================
+//==> DATA 표현 형식을 CHECH
+SELECT SYSDATE FROM DUAL;
+(설정상태 : YEAR/MONTH/DATE 확인)
+
+//===================================
+//==> DUAL : 출력을 위한 가상(?) TABLE
+SELECT 9*9 FROM DUAL;
+SELECT USER FROM DUAL;
+
+//===================================
+==> TABLE 모든 COLUMN VALUE 입력
+INSERT
+INTO emp_test( id, name, salary, title, in_date, dept_name)
+VALUES(1, '김사장', 100, '사장', '04-07-19', '개발부');
+
+
+
+
+SELECT * FROM EMP_TEST;
+
+//===================================
+//==> TABLE 보든 COLUMN에 VALUE 입력 경우
+INSERT
+INTO emp_test
+VALUES(2, '홍길동', 1000, '부사장', '2004/07/19', '영업부');
+
+//===================================
+//==> TABLE 일부 COLUMN VALUE 입력
+INSERT
+INTO emp_test(id, name, salary)
+VALUES(3, '홍길순', 10000);
+
+//===================================
+//==> TABLE 일부 COLUMN VALUE입력
+INSERT
+INTO emp_test( id, name, title)
+VALUES( 4, '이순신', '장군');
+
+//===================================
+1.TCL	:: COMMIT		TABLE RECORD 입력 VALUE 저장(?)
+		:: ROLLBACK : TABLE RECORD 입력 VALUE 취소(?)
+		:: PERSISTANCE DATA 저장(?)/ 취소(?)
+COMMIT;
+
+///////////////////////////////////////////////////////
+// ==> 아래의 DATA입력 후 ROLLBACK하여 COMMIT / ROLLBACK 이해
+INSERT 
+INTO emp_test( id, name, title)
+VALUES ( 4, '이순신', '장군');
+
+SELECT * FROM emp_test;
+
+ROLLBACK;
+
+SELECT * FROM emp_test;
+///////////////////////////////////////////////////////
+
+//===================================
+//==> KEYWORD :: USER / SYSDATE 이용한 VALUE 입력
+INSERT
+INTO emp_test
+VALUES ( 2, USER, 1000, '부사장', SYSDATE, '영업부');
+
+
+//===================================
+//==> NULL 입력 :: 묵시적 입력
+INSERT
+INTO emp_test ( id, name)
+VALUES ( 5, '장나라');
+
+//===================================
+//==>NULL 입력 :: 명시적 입력 //==> NULL 또는 '' 사용
+INSERT
+INTO emp_test
+VALUES ( 6, '신나라', NULL, null, '', '');
+
+COMMIT;

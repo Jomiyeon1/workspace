@@ -1,0 +1,165 @@
+//===================================//
+1. DML :: UPDATE : TABLE RECORD 수정
+///////////////////////////////////////
+//==> SCOOT id 2 확인
+SELECT * FROM emp_test;
+
+//==> SCOTT id 2 ==> 7 변경
+UPDATE emp_test
+SET id = 7
+WHERE name = 'SCOTT';
+
+//==> SCOTT id 2 ==> 7 변경 확인
+SELECT * FROM emp_test;
+
+//==> 취소
+ROLLBACK;
+
+//==>SCOTT id 다시 2 확인
+SELECT * FROM emp_test;
+////////////////////////////////////
+
+
+/////////////////////////////////////
+//==> SCOTT id 2 ==> 7로 변경 후 COMMIT
+UPDATE emp_test
+SET id = 7
+WHERE name = 'SCOTT';
+
+SELECT * FROM emp_test;
+
+COMMIT;
+////////////////////////////////////
+//===================================//
+//==> 영업부 ==> 관리부로 변경
+
+UPDATE emp_test
+SET dept_name = '관리부'
+WHERE dept_name = '영업부';
+
+SELECT * FROM emp_test;
+
+COMMIT;
+
+//===================================//
+//==> 홍길순 :: 사장 / 2000 / 영업팀 :: 변경
+UPDATE emp_test
+Set  title = '사장', salary = 2000, dept_name = '영업팀'
+WHERE name = '홍길순';
+
+
+//===================================//
+//==> 월급 1500 이상인 직원 dept_name '대기발령' 변경
+UPDATE emp_test
+SET dept_name = '대기발령'
+WHERE salary >= 1500;
+
+
+//===================================//
+//==> 전직원 직급 '평사원' 변경 ==> 변경 후 ROLLBACK
+==> WHERE절이 없다면?? ==> 전체 적용
+UPDATE emp_test
+Set title = '평사원';
+
+SELECT * FROM emp_test;
+//===================================//
+//==> 전직원 임금인상 500 ==> 변경 후 COMMIT
+//==> WHERE절이 없다면?? ==> 전체적용
+//==> 힌트 :: int i = 10;		i = i + 5;
+UPDATE emp_test
+Set salary = salary + 500;
+
+
+//===================================//
+//==> 부서명 없는 직원 대기 발령 ==> 변경 후 COMMIT
+//==> (dept_name NULL인 RECORD 대기발령)
+UPDATE emp_test
+SET dept_name = '대기발령'
+WHERE dept_name IS NULL;
+
+UPDATE emp_test
+SET dept_name = '대기발령'
+WHERE dept_name IS NOT NULL;
+
+ROLLBACK;
+
+//============================================================================================
+//===================================//
+1. DML :: DELETR : TABLE RECORD 삭제
+
+//==> title 장군이 RECORD 삭제
+DELETE FROM emp_test
+/* DELETE emp_test */
+WHERE title = '장군';
+
+DELETE FROM emp_test
+WHERE title = '장군';
+
+DELETE emp_test
+WHERE title = '장군';
+
+
+SELECT * FROM emp_test;
+
+COMMIT;
+
+//===================================//
+//==> id 6 이상 RECORD 삭제 ==> 변경 후 ROLLBACK
+
+DELETE FROM emp_test
+WHERE id >= 6;
+
+SELECT * FROM emp_test;
+
+ROLLBACK;
+
+SELECT * FROM emp_test;
+
+
+//===================================//
+//==> id 5이상 6이하 RECORD 삭제 ==> 변경 후 ROLLBACK
+
+DELETE FROM emp_test
+WHERE id >= 5 AND id <= 6;
+
+SELECT * FROM emp_test;
+
+ROLLBACK;
+
+SELECT * FROM emp_test;
+
+//==> 위의 DELETE문 조건과 아래의 조건 비교
+DELETE FROM emp_test
+WHERE id = 5 OR id = 6 ;
+
+SELECT * FROM emp_test;
+
+COMMIT;
+
+SELECT * FROM emp_test;
+
+//===================================//
+//==> 아래와 같은 실수(?) 없도록..
+DELETE FROM emp_test
+WHERE id = 2 OR id = 3 ;
+
+SELECT * FROM emp_test;
+
+ROLLBACK;
+
+SELECT * FROM emp_test;
+
+//==> 아래는 의미를 갖는가??
+DELETE FROM emp_test;
+WHERE id = 2 AND id = 3 ;
+
+//===================================//
+//==> DELETE시 조건절이 없다는 의미는??
+DELETE FROM emp_test;
+
+SELECT * FROM emp_test;
+
+ROLLBACK;
+
+SELECT * FROM emp_test;
+
