@@ -3,28 +3,32 @@ package february.miyeon28;
 public class Prob01 {
 	//method
 	private static String[] stringSplit(String str1, String str2) {
-		String[] str = new String[str1.length()] ;
+
 		int count = 0;
 		int start = 0;
+		int end = str1.indexOf(str2);
 		
 		for(int i = 0; i < str1.length(); i++) {
 			
-			int end = str1.indexOf(str2);
 			char c = str1.charAt(i);
 			String a = String.valueOf(c);
-			
-			if(a == str2) {
+			System.out.print(a);
+			System.out.print("///"+a);
+			if(a == str2/*.charAt(0)*/) {
 				count ++;
+				
 			}
+			System.out.print("="+a);
+		}
 			
 			String[] result = new String[count+1];
 			
-			for(int j = 0; i < result.length; j++) {
+			for(int j = 0; j < result.length; j++) {
 				String s = str1.substring(start, end);
-				start = end + 1;
+				result[j] = s;
+				start = end+1;
 				int index = str1.indexOf(str2, start+1);
 				
-				result[i] = s;
 				if(index == -1) {
 					end = str1.length() -1;
 				}else {
@@ -32,10 +36,8 @@ public class Prob01 {
 				}
 				
 			}
-			return result;
-		}
-		return str;	
 		
+		return result;
 	}
 	
 	//main
