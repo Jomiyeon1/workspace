@@ -11,14 +11,12 @@ public class Prob01 {
 		for(int i = 0; i < str1.length(); i++) {
 			
 			char c = str1.charAt(i);
-			String a = String.valueOf(c);
-			System.out.print(a);
-			System.out.print("///"+a);
-			if(a == str2/*.charAt(0)*/) {
+
+			if(c == str2.charAt(0)) {
 				count ++;
 				
 			}
-			System.out.print("="+a);
+
 		}
 			
 			String[] result = new String[count+1];
@@ -28,7 +26,6 @@ public class Prob01 {
 				result[j] = s;
 				start = end+1;
 				int index = str1.indexOf(str2, start+1);
-				
 				if(index == -1) {
 					end = str1.length() -1;
 				}else {

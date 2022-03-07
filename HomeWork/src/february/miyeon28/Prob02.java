@@ -5,11 +5,12 @@ public class Prob02 {
 	
 	//method
 	public Vector<String> dataChange(String[] strData){
-		Vector<String> v;
+		Vector<String> v =new Vector<String>();
 		
-		for(int i = 0; i < strData.length; i++) {
-			String str = strData[i];
-			v[i] = str.reverse();
+		for(int i = strData.length-1 ; i >= 00 ; i--) {
+			StringBuffer sb = new StringBuffer(strData[i]);
+			sb.reverse();
+			v.addElement(sb.toString());
 		}
 		
 		return v;
