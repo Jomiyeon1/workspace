@@ -65,7 +65,6 @@ SELECT
 name 이름, salary*12 연봉, dept_name 부서
 FROM emp_test
 ORDER BY 부서,salary;
-
 //////////////////////////////////////////////
 //=============================================
 # QUERY :: SELECT : 기타 KEYWORD를 이용 검색, 조회

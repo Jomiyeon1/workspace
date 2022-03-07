@@ -49,6 +49,7 @@ select
 c.name 이름, c.salary 월급, sg.grade 월급등급, s.dept_name 부서명
 from c_emp c, sal_grade sg, s_dept s
 where c.dept_id = s.id AND c.salary between sg.losal AND sg.hisal
+      AND s.dept_name IN ('영업부', '개발부')
 order by sg.grade;
 
 
@@ -58,9 +59,10 @@ order by sg.grade;
 select
 s.dept_name 부서명, count(*) 인원수, sg.grade 월급등급
 from c_emp c, sal_grade sg, s_dept s
-where c.dept_id = s.id AND c.salary between sg.losal AND sg.hisal
-group by c.id, s.dept_name
-having count(*) > 2;
+where c.dept_id = s.id AND 
+      c.salary between sg.losal AND sg.hisal
+group by s.dept_name, sg.grade
+having count(*) > 1;
 
 
 
@@ -86,10 +88,10 @@ SELECT * FROM c_emp ;
 //이름 부서명 전체직원 조회
 select
 c.name 이름, s.dept_name 부서명
-from c_emp c, s_dept s
+from c_emp c, s_dept
 where  c.dept_id = s.id;
 
 select
 c.name 이름, s.dept_name 부서명
-from c_emp c, s_dept s
+from c_emp c, s_dept
 where  c.dept_id = s.id(+);

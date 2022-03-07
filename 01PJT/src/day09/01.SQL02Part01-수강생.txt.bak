@@ -212,7 +212,7 @@ WHERE in_date LIKE'%0%';
 
 //==> ALL : 모두 만족해야하며,
 //==> ANY : 한쪽만 만족해야 한다.
-SELECT
+SELCT
 name 이름, salary 월급
 FROM emp_test
 WHERE salary > ALL(2500,5000);  //==> 최대값의 의미!!

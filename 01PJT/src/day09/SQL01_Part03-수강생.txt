@@ -5,11 +5,11 @@
 //==> 권장사항 : 예약어(keyword) : 대문자 / 식별자(identifier) : 소문자
 
 CREATE TABLE emp_test(
-	id		NUMBER(3),
+	id			NUMBER(3),
 	name		VARCHAR2(15),
 	salary		NUMBER(7,2),
 	title		VARCHAR2(15)	DEFAULT		'사원',
-	in_date		DATE		DEFAULT		SYSDATE,
+	in_date		DATE			DEFAULT		SYSDATE,
 	dept_name	VARCHAR2(15)
 );
 
@@ -24,7 +24,7 @@ SELECT * FROM emp_test;
 
 //==============================
 3.TEST용 TABLE만들기 // ==> 1개 이상의 COLUMN을 갖는다.
-CREATE TABLE test_table(
+CREATE TABLE_test_table(
 );
 
 //===================================
@@ -32,11 +32,8 @@ CREATE TABLE test_table(
 
 CREATE TABLE test_table(
 	no			NUMBER(10),
-	contents		VARCHAR2(10)
+	content		VARCHAR2(10)
 );
-
-===========================
-
 
 DESC test_table;
 
