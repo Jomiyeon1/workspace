@@ -4,28 +4,38 @@ public class Prob01 {
 	//method
 	private static String[] stringSplit(String str1, String str2) {
 		String[] str = new String[str1.length()] ;
+		int count = 0;
+		int start = 0;
 		
-
 		for(int i = 0; i < str1.length(); i++) {
-			int count = 0;
+			
+			int end = str1.indexOf(str2);
 			char c = str1.charAt(i);
-			String a = Character.toString(c);
-			// 추출한 char가 str2와 같다면, count++
+			String a = String.valueOf(c);
+			
 			if(a == str2) {
-				count++;
-				// str2와 같은 문자가 나왔다면?
-				if(count > 0) {
-					
-				}
-			}else{
-				for(int j = 0; j < i; j++) {
-				str[j] += a;
-				}
+				count ++;
 			}
-			System.out.println("");
-		} //end of for i
+			
+			String[] result = new String[count+1];
+			
+			for(int j = 0; i < result.length; j++) {
+				String s = str1.substring(start, end);
+				start = end + 1;
+				int index = str1.indexOf(str2, start+1);
+				
+				result[i] = s;
+				if(index == -1) {
+					end = str1.length() -1;
+				}else {
+					end = index;
+				}
+				
+			}
+			return result;
+		}
+		return str;	
 		
-		return str;
 	}
 	
 	//main
