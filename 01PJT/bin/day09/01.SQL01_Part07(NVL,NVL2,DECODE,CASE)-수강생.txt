@@ -28,7 +28,7 @@ name , NVL2(salary, salary, 0) , NVL(salary, 0)
 FROM emp_test;
 
 SELECT
-name, NVL(salary, salary*12, 0), NVL(salary*12, 0) 
+name, NVL2(salary, salary*12, 0), NVL(salary*12, 0) 
 FROM emp_test;
 
 //==> 아래의 QUERY를 통해 NVL() / NVL2()의 차이점 이해
@@ -43,14 +43,14 @@ FROM emp_test;
 
 SELECT
 name, DECODE(title,
-					NULL, '<직급없음>', /* if(title = null)  <직급없음>		*/
-					'직급있음')		/*  else			   아니면 직급있음 */
+		NULL, '<직급없음>', /* if(title = null)  <직급없음>		*/
+		'직급있음')		/*  else			   아니면 직급있음 */
 FROM emp_test;
 
 SELECT
 name, DECODE ( title
-				NULL,		'<직급없음>',	/*	if(title = null)		<직급없음>		*
+				NULL,		'<직급없음>',	/*	if(title = null)		<직급없음>		*/
 				'사장',		'회사의아버지', /*	else if(title = '사장')	회사의아버지	*/
-				'부사장',		'회사의어머니',/*	else if(title = '부사장')	회사의어머니	*
-				'직급있음'), 	title 		/* else						아니면 직급있음	*
+				'부사장',		'회사의어머니',/*	else if(title = '부사장')	회사의어머니	*/
+				'직급있음'), 	title 		/* else						아니면 직급있음	*/
 FROM emp_test;

@@ -17,8 +17,8 @@ SELECT
 COUNT(*) "레코드",
 COUNT(salary) 월급수령자,
 COUNT(NVL(salary,0)) "월급수령자(NULL포함)",
-COUNT(DISTINCT salary) 	월급종류",
-COUNT(DISTINCK NVL(salary,0)) "월급종류(NULL포함)"
+COUNT(DISTINCT salary) 	"월급종류",
+COUNT((DISTINCT NVL(salary, 0)) "월급종류(NULL포함)"
 FROM emp_test;
 
 //==> 영업부 인원수 count 조회
@@ -29,6 +29,8 @@ COUNT(salary) 영업부직원월급수령자
 FROM emp_test
 WHERE dept_name='영업부';
 
+SELECT * FROM emp_test
+WHERE dept_name = '영업부';
 
 //==> 관리부 월급합/최대/최소/평균 조회
 SELECT

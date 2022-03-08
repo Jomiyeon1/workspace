@@ -46,13 +46,13 @@ WHERE in_date >'2004-01-01' OR salary >= 5000;
 SELECT
 name 이름, salary 월급, dept_name 부서, in_date 입사일
 FROM emp_test
-WHEWE in_date > '2007-01-01' AND salary >= 5000 OR dept_name = '관리부';
+WHERE in_date > '2007-01-01' AND salary >= 5000 OR dept_name = '관리부';
 
 //==> () 우선순위 이해
 SELECT
 name 이름, salary 월급, dept_name 부서, in_date 입사일
 FROM emp_test
-WHEWE in_date > '2007-01-01' AND (salary >= 5000 OR dept_name = '관리부');
+WHERE in_date > '2007-01-01' AND (salary >= 5000 OR dept_name = '관리부');
 
 //=========================================//
 3. WHERE 조건절 :: SQL 연산자 BETWEEN A AND B
@@ -61,7 +61,7 @@ WHEWE in_date > '2007-01-01' AND (salary >= 5000 OR dept_name = '관리부');
 SELECT
 name 이름, salary 월급, in_date 입사일
 FROM emp_test
-WHERE in_date BETWEEN 1000 AND 2500
+WHERE salary BETWEEN 1000 AND 2500
 ORDER BY salary;
 
 
@@ -86,12 +86,20 @@ FROM emp_test
 WHERE name BETWEEN '김유신222' AND '한국990'
 ORDER BY name;
 
+
+SELECT
+name 이름, salary 월급, in_date 입사일
+FROM emp_test
+WHERE name NOT BETWEEN '김유신222' AND '한국990'
+ORDER BY name;
+
+
 //==> 아래와 비교 이해
 SELECT name FROM emp_test ORDER BY name;
 
 ==> 위의 SELECT 비교 ( 주의 A < B )
 SELECT
-name 이름, salary 월급, dept_부서, in_date 입사일
+name 이름, salary 월급, dept_name 부서, in_date 입사일
 FROM emp_test
 WHERE name BETWEEN '한국990' AND '김유신222';
 
@@ -103,6 +111,12 @@ SELECT
 name 이름, dept_name 부서
 FROM emp_test
 WHERE dept_name IN('관리부','영업부')
+ORDER BY dept_name;
+
+SELECT
+name 이름, dept_name 부서
+FROM emp_test
+WHERE dept_name NOT IN('관리부','영업부')
 ORDER BY dept_name;
 
 //==> 아래와 비교
@@ -198,7 +212,7 @@ WHERE in_date LIKE'%0%';
 
 //==> ALL : 모두 만족해야하며,
 //==> ANY : 한쪽만 만족해야 한다.
-SELCT
+SELECT
 name 이름, salary 월급
 FROM emp_test
 WHERE salary > ALL(2500,5000);  //==> 최대값의 의미!!

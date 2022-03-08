@@ -1,0 +1,14 @@
+//[문제1]
+
+//[문제3]
+
+//[문제4]
+select
+first_name, last_name, salary
+from employees
+where job_id IN (select
+				 job_id
+				 from jobs
+				 where job_title IN 'Sales Representative')
+	   AND salary >= 9000;
+					
