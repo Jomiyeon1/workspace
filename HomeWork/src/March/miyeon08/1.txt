@@ -1,0 +1,123 @@
+// [ 문제  1 ]
+
+select
+e.employee_id 사번, e.department_id 부서번호, e.salary 연봉, vt.avgsal 부서평균연봉 
+from employees e,
+(select
+department_id, round(avg(salary),0) avgsal
+from employees 
+group by department_id) vt
+where (e.department_id = vt.department_id) and (e.salary > vt.avgsal)
+order by 부서평균연봉 DESC;
+
+
+//부서별평균연봉조회
+select
+department_id, round(avg(salary),0) 부서평균연봉 
+from employees 
+group by department_id;
+
+// [ 문제  2 ]
+select
+vt.rankikng, e.last_name, e.first_name, e.salary
+from employees e, (select
+rank() over(order by salary desc) rankikng, salary, last_name, first_name
+from employees) vt
+where vt.salary = e.salary and 
+	  vt.first_name = e.first_name AND
+	  vt.last_name = e.last_name AND
+	  vt.rankikng BETWEEN 6 AND 10;
+	  
+	  
+	  
+select
+vt.rankikng, e.last_name, e.first_name, e.salary
+from employees e, (select
+rank() over(order by salary desc) rankikng, salary, last_name, first_name
+from employees) vt
+where vt.salary = e.salary and 
+	  vt.first_name = e.first_name AND
+	  vt.last_name = e.last_name AND
+	  vt.rankikng BETWEEN 6 AND 10;
+
+// [ 문제  3 ]
+
+select 
+hire_date
+from employees;
+
+SELECT
+to_char(e.hire_date,'yyyy') 년도, avg(e.salary) 평균급여
+from employees e, jobs j
+where e.job_id = j.job_id
+	  and j.job_title IN 'Sales Manager'
+group by hire_date
+order by hire_date;
+//==============================================
+
+SELECT
+vt.년도 년도, avg(e.salary) 평균급여
+from employees e, (select 
+					to_char(e1.hire_date,'yyyy') 년도, e1.salary
+					from employees e1, jobs j
+					where e1.job_id = j.job_id and j.job_title IN 'Sales Manager'
+					group by e1.hire_date) vt , jobs j	
+where e.job_id = j.job_id
+group by 년도
+order by 년도 asc;
+
+select 
+to_char(e.hire_date,'yyyy') 년도
+from employees e, jobs j
+where e.job_id = j.job_id
+	  and j.job_title IN 'Sales Manager'
+
+// [ 문제  4 ]=====================================
+select
+e.last_name 사원이름, e.manager_id 매니저이름, department_id  부서이름
+from countries c, employees e
+where e.country_id = c.country_id ;
+
+order by e.last_name;
+c.country_name = 'seattle'
+
+
+//============================
+//seattle인 사람 출력
+SELECT
+e.last_name, 
+from countries c, location l, employees e
+
+
+SELECT
+e.last_name, d.department_name
+from employees e,departments d, locations l
+where e.department_id = e.department_id AND
+	  d.location_id = ( SELECT
+						location_id
+						from locations
+						where city IN 'seattle');
+						
+						
+select
+e.last_name, e.manager_id, d.department_name
+from employees e, departments d, locations l
+where e.department_id = d.department_id 
+	  AND d.location_id = l.location_id
+	  AND l.city =(select
+		  city
+		  from locations
+          where city IN 'Seattle')
+ORDER BY e.last_name;
+
+// 매니저 이름 출력하기
+SELECT
+last_name
+from employees e (SELECT 
+				 manager_id
+				 from employees) vt
+where ;
+
+SELECT 
+manager_id
+from employees;

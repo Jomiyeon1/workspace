@@ -10,5 +10,5 @@ where job_id IN (select
 				 job_id
 				 from jobs
 				 where job_title IN 'Sales Representative')
-	   AND salary >= 9000;
+	   AND salary BETWEEN 9000 and 10000;
 					
