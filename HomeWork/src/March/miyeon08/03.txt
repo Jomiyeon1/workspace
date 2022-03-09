@@ -1,6 +1,18 @@
 //[문제1]
+SELECT
+e2.last_name, e2.salary
+FROM employees e1, employees e2
+where e1.employee_id = e2.manager_id and 
+      e1.salary < e2.salary;	
+
+SELECT
+manager_id, 
+FROM employees
+where 
+
 
 //[문제3]
+목요일 이후..
 
 //[문제4]
 select

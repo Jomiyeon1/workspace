@@ -1,6 +1,6 @@
 //[¹®Á¦1]
 select
-e.employee_id, e.first_name, e.last_name, NVL(d.department_name,'<NOT ASSGNED>')
+e.employee_id, e.first_name, e.last_name, NVL(d.department_name,'<NOT ASSGNED>') department_name
 from employees e, departments d
 where e.department_id = d.department_id(+) 
       AND e.hire_date between '1999-01-01' and '1999-12-31';
