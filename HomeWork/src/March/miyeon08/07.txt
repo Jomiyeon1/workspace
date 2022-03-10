@@ -91,15 +91,25 @@ WHERE e.department_id = d.department_id(+) AND
 GROUP BY c.country_name, l.city;
 
 // [문제3]
-SELECT
-employee_id 직원아이디, first_name 이름, salary 급여, avg(salary)
-FROM employees
-GROUP BY employee_id, first_name, salary;
 
-//최대급여
 SELECT
-e.employee_id, max(e.salary)
-FROM employees e, departments
-GROUP BY employee_id;
+e.employee_id 직원아이디, e.first_name 이름, e.salary 급여, vt2.davg 부셔평균
+FROM employees e, (SELECT
+                    d.department_id 부서번호, max(e.salary) maxsal
+                    FROM employees e, departments d
+                    WHERE e.department_id = d.department_id
+                    GROUP BY d.department_id) vt,					
+					(SELECT
+					d.department_id 부서번호2, ROUND(avg(e.salary),2) davg
+					FROM employees e, departments d
+					WHERE e.department_id = d.department_id
+					GROUP BY d.department_id) vt2					
+WHERE e.department_id = vt.부서번호 AND
+	  e.department_id = vt2.부서번호2 AND
+	  vt.maxsal = salary
+ORDER BY e.employee_id;
+
 
 // [문제4]
+
+// [3page]==================================
