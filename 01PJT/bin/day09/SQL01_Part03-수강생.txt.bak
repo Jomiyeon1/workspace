@@ -1,0 +1,44 @@
+//======================================
+1.DDL :: CREATE : TABLE 생성
+//==> TABLE 생성
+//==> SQL은 대소문자 구별안함.
+//==> 권장사항 : 예약어(keyword) : 대문자 / 식별자(identifier) : 소문자
+
+CREATE TABLE emp_test(
+	id			NUMBER(3),
+	name		VARCHAR2(15),
+	salary		NUMBER(7,2),
+	title		VARCHAR2(15)	DEFAULT		'사원',
+	in_data		DATE			DEFAULT		SYSDATE,
+	dept_naem	VARCHAR2(15)
+);
+
+//==========================
+2. TABLE 생성 확인. TABLE RECORD 조회( DESCRIBE / SELECT )
+
+DESC emp_test;
+
+DESCRIBE emp_test;
+
+SELECT * FROM emp_test;
+
+//==============================
+3.TEST용 TABLE만들기 // ==> 1개 이상의 COLUMN을 갖는다.
+CREATE TABLE_test_table(
+);
+
+//===================================
+4. DDL :: DROP : TABLE 삭제
+
+CREATE TABLE test_table(
+	no			NUMBER(10),
+	content		VARCHAR2(10)
+);
+
+DESC test_table;
+
+SELECT * FROM test_table;
+
+DROP TABLE test_table;
+
+DESC test_table;

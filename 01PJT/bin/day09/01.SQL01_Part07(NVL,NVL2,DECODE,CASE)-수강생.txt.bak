@@ -1,0 +1,56 @@
+//===================================//
+1. QUERY :: SELECT : TABLE RECORD 검색, 조회
+
+//===================================//
+//==> NULL 처리함수(?,FUNTION)사용
+//==> NULL인 경우, NULL이 아닌경우 처리
+//==> NVL(expr1, expr2) :: NOTATION ==> expr (EXPRSSION::산술식)
+//==> expr1 이 NULL인 경우 expr2로 출력
+
+//==> salary가 NULL인 RECORD 확인
+SELECT * FROM emp_test;
+
+SELECT
+name, NVL(salary,0)
+FROM emp_test;
+
+//===================================//
+//==> 아래 QUERY 가 ERROR 발생 이유??
+SELECT
+name, NVL(salary, '무급')
+FROM emp_test;
+
+//===================================//
+//==> NVL(expr1, expr2) :: expr1이 null인 경우 expr2로 출력
+//==> NVL2(컬럼명,[null값이 아닐경우], [null 값일 경우])
+SELECT
+name , NVL2(salary, salary, 0) , NVL(salary, 0)
+FROM emp_test;
+
+SELECT
+name, NVL2(salary, salary*12, 0), NVL(salary*12, 0) 
+FROM emp_test;
+
+//==> 아래의 QUERY를 통해 NVL() / NVL2()의 차이점 이해
+SELECT
+name, NVL2( title, title, '<직급없음>'), NVL(title, '<직급없음>'),
+NVL2( title, '직급있음', '<직급없음>')
+FROM emp_test;
+
+//===================================//
+//==> DECODE 함수도 사용하여 보면..
+//==>> if ~ else / if ~ else if ~ else와 비교 이해
+
+SELECT
+name, DECODE(title,
+		NULL, '<직급없음>', /* if(title = null)  <직급없음>		*/
+		'직급있음')		/*  else			   아니면 직급있음 */
+FROM emp_test;
+
+SELECT
+name, DECODE ( title
+				NULL,		'<직급없음>',	/*	if(title = null)		<직급없음>		*
+				'사장',		'회사의아버지', /*	else if(title = '사장')	회사의아버지	*/
+				'부사장',		'회사의어머니',/*	else if(title = '부사장')	회사의어머니	*
+				'직급있음'), 	title 		/* else						아니면 직급있음	*
+FROM emp_test;

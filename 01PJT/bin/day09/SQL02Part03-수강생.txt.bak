@@ -1,0 +1,106 @@
+//==============================================
+# FUNCTION => 내부적으로 제공되는 함수
+	:: SINGLE POW FUNTION	=> 1개의 record에서 사용 단일행함수
+	:: MULTI ROW FUNTION	=> 여러개의 record에서 사용 다중행함수
+//========================================================
+//==> 다중행 함수 : COUNT, AVG, SUM, MIN, MAX
+
+//==> COUNT(*) 의미
+SELECT COUNT(*) FROM emp_test;
+
+//==> KEYWORD : ROWNUM 이해
+SELECT ROWNUM , id, name FROM emp_test;
+
+
+//==> 출력 내용의 이해
+SELECT
+COUNT(*) "레코드",
+COUNT(salary) 월급수령자,
+COUNT(NVL(salary,0)) "월급수령자(NULL포함)",
+COUNT(DISTINCT salary) 	"월급종류",
+COUNT((DISTINCT NVL(salary, 0)) "월급종류(NULL포함)"
+FROM emp_test;
+
+//==> 영업부 인원수 count 조회
+SELECT
+COUNT(*) 영업부직원1,
+COUNT( dept_name ) 영업부직원2,
+COUNT(salary) 영업부직원월급수령자
+FROM emp_test
+WHERE dept_name='영업부';
+
+SELECT * FROM emp_test
+WHERE dept_name = '영업부';
+
+//==> 관리부 월급합/최대/최소/평균 조회
+SELECT
+SUM(salary)	관리부월급합,
+MAX(salary)	관리부최대월급,
+MIN(salary)	관리부최소월급,
+AVG(salary)	관리부평균월급,
+AVG(NVL(salary,0))	관리부평균월급,
+FROM emp_test
+WHERE dept_name = '관리부';
+
+
+//==> 영업부로 다시 확인 이해.
+SELECT
+SUM(salary)	영업부월급합,
+MAX(salary)	영업부최대월급,
+MIN(salary)	영업부최소월급,
+AVG(salary)	영업부평균월급,
+AVG(NVL(salary,0))	영업부평균월급,
+FROM emp_test
+WHERE dept_name = '영업부';
+
+//==================================================
+//==> 다중행 함수(그룹함수) : GROUP BY 이해
+
+//==> 아래 ERROR 발생??
+SELECT
+name, MAX(salary)
+FROM emp_test
+WHERE dept_name = '관리부';
+//==> 이름은 여러개 / max salary 한개
+
+//==> 아래 또한 ERROR 발생??
+SELECT
+dept_name, MAX(salary)
+FROM emp_test
+WHERE dept_name = '관리부';
+//==> 부서명은 여러개 / max salary 한개
+
+
+//==> 일 대 다 문제 해결 / KEYWORD : GROUP BY 사용
+SELECT
+dept_name, MAX(salary)
+FROM emp_test
+WHERE dept_name = '관리부'
+GROUP BY dept_name;
+
+
+//==> 아래와 같이 하면, 결과를 이해 확인하자.c.
+SELECT
+dept_name, MAX(salary)
+FROM emp_test
+GROUP BY dept_name;
+
+//==> 부서명 NULL 제외
+SELECT
+dept_name, MAX(salary)
+FROM emp_test
+WHERE dept_name IS NOT NULL
+GROUP BY dept_name;
+
+
+//==> 부서명, 각 부서 평균급여 출력
+SELECT
+dept_name, AVG(salary)
+FROM emp_test
+WHERE dept_name IS NOT NULL
+GROUP BY dept_name;
+ORDER BY dept_name;
+
+
+
+
