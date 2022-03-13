@@ -128,3 +128,16 @@ group BY j.job_title
 HAVING avg(salary) > 2001;
 
 // [문제8]
+SELECT
+e.employee_id 사번, first_name||' '||e.last_name 이름
+FROM employees e, jobs j, job_history jh
+WHERE e.employee_id = jh.employee_id AND
+		jh.job_id = j.job_id AND
+		j.job_title IN 'Public Accountant';
+		
+SELECT
+j.job_title
+FROM jobs j, job_history jh
+WHERE jh.job_id = j.job_id AND
+		j.job_title IN 'public accountant';
+		
