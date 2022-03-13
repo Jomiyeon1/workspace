@@ -27,50 +27,18 @@ where vt.salary = e.salary and
 	  vt.first_name = e.first_name AND
 	  vt.last_name = e.last_name AND
 	  vt.rankikng BETWEEN 6 AND 10;
-	  
-	  
-	  
-select
-vt.rankikng, e.last_name, e.first_name, e.salary
-from employees e, (select
-rank() over(order by salary desc) rankikng, salary, last_name, first_name
-from employees) vt
-where vt.salary = e.salary and 
-	  vt.first_name = e.first_name AND
-	  vt.last_name = e.last_name AND
-	  vt.rankikng BETWEEN 6 AND 10;
 
 // [ 문제  3 ]
 
-select 
-hire_date
-from employees;
 
 SELECT
-to_char(e.hire_date,'yyyy') 년도, avg(e.salary) 평균급여
+to_char(e.hire_date,'yyyy') 년도, TO_CHAR(AVG(SALARY),'999,999') 평균급여
 from employees e, jobs j
 where e.job_id = j.job_id
 	  and j.job_title IN 'Sales Manager'
-group by hire_date
-order by hire_date;
-//==============================================
+group by to_char(e.hire_date,'yyyy')
+order by to_char(e.hire_date,'yyyy');
 
-SELECT
-vt.년도 년도, avg(e.salary) 평균급여
-from employees e, (select 
-					to_char(e1.hire_date,'yyyy') 년도, e1.salary
-					from employees e1, jobs j
-					where e1.job_id = j.job_id and j.job_title IN 'Sales Manager'
-					group by e1.hire_date) vt , jobs j	
-where e.job_id = j.job_id
-group by 년도
-order by 년도 asc;
-
-select 
-to_char(e.hire_date,'yyyy') 년도
-from employees e, jobs j
-where e.job_id = j.job_id
-	  and j.job_title IN 'Sales Manager'
 
 // [ 문제  4 ]=====================================
 select
@@ -121,3 +89,42 @@ where ;
 SELECT 
 manager_id
 from employees;
+
+// [문제5]
+SELECT
+e.last_name 사원이름, d.department_name 부서이름, e.salary 급여
+FROM employees e, departments d, (SELECT
+									d.department_name 부서명, MIN(e.salary) minsal
+									FROM employees e, departments d
+									WHERE e.department_id = d.department_id
+									group BY d.department_name)vt
+WHERE e.department_id = d.department_id AND
+		d.department_name = vt.부서명 AND
+		vt.minsal = e.salary
+ORDER BY 부서이름, 사원이름;
+
+
+// [문제6]
+
+
+SELECT
+l.city 도시이름, avg(e.salary) 평균급여, count(*)
+FROM employees e, departments d, locations l, countries c
+WHERE e.department_id = d.department_id AND
+	  d.location_id = l.location_id AND
+	  l.country_id = c.country_id
+group BY l.city
+HAVING count(*) < 10
+ORDER BY 평균급여;
+
+// [문제7]
+SELECT
+j.job_title 직책, avg(salary) 평균급여
+FROM employees e, jobs j, departments d
+WHERE e.job_id = j.job_id AND
+		d.department_id = e.department_id AND
+		e.department_id = 30
+group BY j.job_title
+HAVING avg(salary) > 2001;
+
+// [문제8]

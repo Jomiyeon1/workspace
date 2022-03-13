@@ -111,5 +111,49 @@ ORDER BY e.employee_id;
 
 
 // [문제4]
+//[4-1 SALGRADE 테이블 생성 / 데이터 INSERT]
+CREATE TABLE salgrade(
+	grade	NUMBER(2) 	PRIMARY KEY,
+	losal	NUMBER(5)	NOT NULL,
+	hisal	NUMBER(5)	NOT NULL
+);
+
+INSERT INTO salgrade VALUES (1,1000,5000);
+INSERT INTO salgrade VALUES (2,5001,10000);
+INSERT INTO salgrade VALUES (3,10001,20000);
+INSERT INTO salgrade VALUES(4,20001,30000);
+
+//[4-2 급여등급별 직원수 출력]
+SELECT
+s.grade||'등급' 급여등급, count(*) 직원수
+FROM employees e, salgrade s
+WHERE e.salary BETWEEN s.losal AND s.hisal
+GROUP BY s.grade
+ORDER BY 급여등급;
 
 // [3page]==================================
+//[문제1]
+
+SELECT
+NVL(TO_CHAR(TRUNC(e.commission_pct,1),'FM99.99'), '<커미션없음>') 커미션, COUNT(*) 직원수
+FROM employees e
+GROUP BY TO_CHAR(TRUNC(e.commission_pct,1),'FM99.99')
+ORDER BY TO_CHAR(TRUNC(e.commission_pct,1),'FM99.99') DESC;
+
+//[문제2]
+
+SELECT
+부서명, 직원명, 급여, 커미션
+FROM (SELECT
+d.department_name 부서명, e.first_name 직원명, e.salary 급여, e.commission_pct 커미션
+FROM employees e, departments d
+WHERE d.department_id = e.department_id AND e.commission_pct IS NOT NULL
+ORDER BY 커미션 DESC, 급여 DESC)
+where rownum < 5;
+
+
+
+
+
+
+//[문제3]
