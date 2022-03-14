@@ -1,4 +1,4 @@
-//[ë¬¸ì œ1]
+//[¹®Á¦1]
 select
 j.job_title, sum(e.salary)
 FROM employees e, jobs j
@@ -7,7 +7,7 @@ GROUP BY j.job_title
 HAVING sum(e.salary) > 30000
 ORDER BY sum(e.salary) DESC;
 
-//[ë¬¸ì œ2]
+//[¹®Á¦2]
 SELECT
 e.employee_id, e.first_name, j.job_title, d.department_name
 FROM employees e, jobs j, locations l, departments d
@@ -17,4 +17,4 @@ WHERE e.department_id = d.department_id AND
 	  l.city IN 'Seattle';
 
 
-//[ë¬¸ì œ3]
+//[¹®Á¦3]

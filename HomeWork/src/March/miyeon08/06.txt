@@ -1,13 +1,13 @@
-//[ë¬¸ì œ1]	  
+//[¹®Á¦1]	  
 SELECT
-e1.first_name ì‚¬ì›ì´ë¦„, e1.hire_date, e.employee_id, e.first_name ë§¤ë‹ˆì €ì´ë¦„
+e1.first_name »ç¿øÀÌ¸§, e1.hire_date, e.employee_id, e.first_name ¸Å´ÏÀúÀÌ¸§
 FROM employees e, employees e1
 WHERE e.employee_id(+) = e1.manager_id AND
 	  e1.hire_date BETWEEN '1980-01-01' AND '1989-12-31';
 
-//[ë¬¸ì œ2]
+//[¹®Á¦2]
 
-// sales ë¶€ì„œ ì§ì›
+// sales ºÎ¼­ Á÷¿ø
 SELECT
 e.first_name, e.salary, d.department_name
 FROM employees e, departments d, (SELECT
@@ -21,11 +21,11 @@ WHERE e.department_id = d.department_id AND
 						  WHERE department_name = 'Sales') AND
 	  e.salary < vt.avgs;
 
-// 100ë²ˆë¶€ì„œì˜ í‰ê· ê¸‰ì—¬
+// 100¹øºÎ¼­ÀÇ Æò±Õ±Ş¿©
 SELECT
 avg(salary)
 FROM employees
 WHERE department_id = 100;
 						  
 
-//[ë¬¸ì œ3]
+//[¹®Á¦3]

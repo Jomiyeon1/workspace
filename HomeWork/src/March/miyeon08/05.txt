@@ -1,4 +1,4 @@
-//[ë¬¸ì œ1]
+//[¹®Á¦1]
 SELECT
 d.department_name name, MIN(e.salary) minsal, MAX(e.salary) maxsal, AVG(e.salary) avgsal 
 FROM departments d, employees e
@@ -6,7 +6,7 @@ WHERE d.department_id = e.department_id
 GROUP BY d.department_name
 ORDER BY name;
 
-//[ë¬¸ì œ2]
+//[¹®Á¦2]
 SELECT
 e.employee_id, e.department_id, e.salary, vt.avgs
 FROM employees e, (SELECT
@@ -17,7 +17,7 @@ FROM employees e, (SELECT
 WHERE e.salary > vt.avgs AND
       e.department_id = vt.id;
 
-//ë¶€ì„œë³„ í‰ê· 
+//ºÎ¼­º° Æò±Õ
 SELECT
 e.department_id, avg(e.salary) avgs
 FROM departments d, employees e
@@ -25,4 +25,4 @@ WHERE d.department_id = e.department_id
 GROUP BY e.department_id;
 
 
-//[ë¬¸ì œ3]
+//[¹®Á¦3]

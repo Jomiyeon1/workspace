@@ -1,13 +1,13 @@
 // [1page]==================================
-// [[ë¬¸ì œ1]
+// [[¹®Á¦1]
 SELECT
-TO_CHAR(hire_date,'MM')||'ì›”' ì›”, count(*) ì§ì›ìˆ˜
+TO_CHAR(hire_date,'MM')||'¿ù' ¿ù, count(*) Á÷¿ø¼ö
 FROM employees
 GROUP BY TO_CHAR(hire_date,'MM')
-ORDER BY ì›”;
+ORDER BY ¿ù;
 
 
-// [[ë¬¸ì œ2]
+// [[¹®Á¦2]
 
 SELECT
 d.department_name, e.first_name, e.salary
@@ -19,16 +19,16 @@ WHERE e.department_id = d.department_id AND
       e.department_id = vt.department_id AND
       e.salary = vt.maxsal;
 
-//ë¶€ì„œë³„ maxsalary
+//ºÎ¼­º° maxsalary
 SELECT
 max(salary) maxsal, department_id
 FROM employees
 GROUP BY department_id;
 
 
-// [[ë¬¸ì œ3]
+// [[¹®Á¦3]
 SELECT
-d.department_name ë¶€ì„œëª…, max(salary) ìµœëŒ€ê¸‰ì—¬, min(salary) ìµœì†Œê¸‰ì—¬, ROUND(avg(salary)) í‰ê· ê¸‰ì—¬
+d.department_name ºÎ¼­¸í, max(salary) ÃÖ´ë±Ş¿©, min(salary) ÃÖ¼Ò±Ş¿©, ROUND(avg(salary)) Æò±Õ±Ş¿©
 FROM employees e, departments d
 WHERE d.department_id = e.department_id
 GROUP BY d.department_name
@@ -61,57 +61,57 @@ GROUP BY d.department_name
 HAVING d.department_name IN 'Sales';
 
 
-// [[ë¬¸ì œ4]
+// [[¹®Á¦4]
 SELECT
-NVL(d.department_name,'<ì‹ ìƒë¶€ì„œ>') ë¶€ì„œëª…, COUNT(*) ì§ì›ìˆ˜
+NVL(d.department_name,'<½Å»ıºÎ¼­>') ºÎ¼­¸í, COUNT(*) Á÷¿ø¼ö
 FROM departments d, employees e
 WHERE e.department_id = d.department_id(+)
 GROUP BY d.department_name
 HAVING COUNT(*) = 1
-ORDER BY ë¶€ì„œëª… DESC;
+ORDER BY ºÎ¼­¸í DESC;
 
 
 //[2page]==================================
-// [ë¬¸ì œ1]
+// [¹®Á¦1]
 SELECT
-d.department_name ë¶€ì„œëª…, TO_CHAR(e.hire_date,'MM') ì…ì‚¬ì›”, COUNT(*) ì§ì›ìˆ˜
+d.department_name ºÎ¼­¸í, TO_CHAR(e.hire_date,'MM') ÀÔ»ç¿ù, COUNT(*) Á÷¿ø¼ö
 FROM employees e, departments d
 WHERE d.department_id = e.department_id
 GROUP BY d.department_name, TO_CHAR(e.hire_date,'MM')
 HAVING COUNT(*) > 4
-ORDER BY ë¶€ì„œëª…;
+ORDER BY ºÎ¼­¸í;
 
-// [ë¬¸ì œ2]
+// [¹®Á¦2]
 SELECT
-NVL(c.country_name,'<ë¶€ì„œì—†ìŒ>') êµ­ê°€ëª…, NVL(l.city,'<ë¶€ì„œì—†ìŒ>') ë„ì‹œëª…,count(*) ì§ì›ìˆ˜
+NVL(c.country_name,'<ºÎ¼­¾øÀ½>') ±¹°¡¸í, NVL(l.city,'<ºÎ¼­¾øÀ½>') µµ½Ã¸í,count(*) Á÷¿ø¼ö
 FROM employees e, departments d, locations l, countries c
 WHERE e.department_id = d.department_id(+) AND
 	  d.location_id = l.location_id(+) AND
 	  l.country_id = c.country_id(+)
 GROUP BY c.country_name, l.city;
 
-// [ë¬¸ì œ3]
+// [¹®Á¦3]
 
 SELECT
-e.employee_id ì§ì›ì•„ì´ë””, e.first_name ì´ë¦„, e.salary ê¸‰ì—¬, vt2.davg ë¶€ì…”í‰ê· 
+e.employee_id Á÷¿ø¾ÆÀÌµğ, e.first_name ÀÌ¸§, e.salary ±Ş¿©, vt2.davg ºÎ¼ÅÆò±Õ
 FROM employees e, (SELECT
-                    d.department_id ë¶€ì„œë²ˆí˜¸, max(e.salary) maxsal
+                    d.department_id ºÎ¼­¹øÈ£, max(e.salary) maxsal
                     FROM employees e, departments d
                     WHERE e.department_id = d.department_id
                     GROUP BY d.department_id) vt,					
 					(SELECT
-					d.department_id ë¶€ì„œë²ˆí˜¸2, ROUND(avg(e.salary),2) davg
+					d.department_id ºÎ¼­¹øÈ£2, ROUND(avg(e.salary),2) davg
 					FROM employees e, departments d
 					WHERE e.department_id = d.department_id
 					GROUP BY d.department_id) vt2					
-WHERE e.department_id = vt.ë¶€ì„œë²ˆí˜¸ AND
-	  e.department_id = vt2.ë¶€ì„œë²ˆí˜¸2 AND
+WHERE e.department_id = vt.ºÎ¼­¹øÈ£ AND
+	  e.department_id = vt2.ºÎ¼­¹øÈ£2 AND
 	  vt.maxsal = salary
 ORDER BY e.employee_id;
 
 
-// [ë¬¸ì œ4]
-//[4-1 SALGRADE í…Œì´ë¸” ìƒì„± / ë°ì´í„° INSERT]
+// [¹®Á¦4]
+//[4-1 SALGRADE Å×ÀÌºí »ı¼º / µ¥ÀÌÅÍ INSERT]
 CREATE TABLE salgrade(
 	grade	NUMBER(2) 	PRIMARY KEY,
 	losal	NUMBER(5)	NOT NULL,
@@ -123,32 +123,32 @@ INSERT INTO salgrade VALUES (2,5001,10000);
 INSERT INTO salgrade VALUES (3,10001,20000);
 INSERT INTO salgrade VALUES(4,20001,30000);
 
-//[4-2 ê¸‰ì—¬ë“±ê¸‰ë³„ ì§ì›ìˆ˜ ì¶œë ¥]
+//[4-2 ±Ş¿©µî±Şº° Á÷¿ø¼ö Ãâ·Â]
 SELECT
-s.grade||'ë“±ê¸‰' ê¸‰ì—¬ë“±ê¸‰, count(*) ì§ì›ìˆ˜
+s.grade||'µî±Ş' ±Ş¿©µî±Ş, count(*) Á÷¿ø¼ö
 FROM employees e, salgrade s
 WHERE e.salary BETWEEN s.losal AND s.hisal
 GROUP BY s.grade
-ORDER BY ê¸‰ì—¬ë“±ê¸‰;
+ORDER BY ±Ş¿©µî±Ş;
 
 // [3page]==================================
-//[ë¬¸ì œ1]
+//[¹®Á¦1]
 
 SELECT
-NVL(TO_CHAR(TRUNC(e.commission_pct,1),'FM99.99'), '<ì»¤ë¯¸ì…˜ì—†ìŒ>') ì»¤ë¯¸ì…˜, COUNT(*) ì§ì›ìˆ˜
+NVL(TO_CHAR(TRUNC(e.commission_pct,1),'FM99.99'), '<Ä¿¹Ì¼Ç¾øÀ½>') Ä¿¹Ì¼Ç, COUNT(*) Á÷¿ø¼ö
 FROM employees e
 GROUP BY TO_CHAR(TRUNC(e.commission_pct,1),'FM99.99')
 ORDER BY TO_CHAR(TRUNC(e.commission_pct,1),'FM99.99') DESC;
 
-//[ë¬¸ì œ2]
+//[¹®Á¦2]
 
 SELECT
-ë¶€ì„œëª…, ì§ì›ëª…, ê¸‰ì—¬, ì»¤ë¯¸ì…˜
+ºÎ¼­¸í, Á÷¿ø¸í, ±Ş¿©, Ä¿¹Ì¼Ç
 FROM (SELECT
-d.department_name ë¶€ì„œëª…, e.first_name ì§ì›ëª…, e.salary ê¸‰ì—¬, e.commission_pct ì»¤ë¯¸ì…˜
+d.department_name ºÎ¼­¸í, e.first_name Á÷¿ø¸í, e.salary ±Ş¿©, e.commission_pct Ä¿¹Ì¼Ç
 FROM employees e, departments d
 WHERE d.department_id = e.department_id AND e.commission_pct IS NOT NULL
-ORDER BY ì»¤ë¯¸ì…˜ DESC, ê¸‰ì—¬ DESC)
+ORDER BY Ä¿¹Ì¼Ç DESC, ±Ş¿© DESC)
 where rownum < 5;
 
 
@@ -156,4 +156,4 @@ where rownum < 5;
 
 
 
-//[ë¬¸ì œ3]
+//[¹®Á¦3]
