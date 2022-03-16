@@ -48,7 +48,7 @@
 		<servlet-class>PostData</servlet-class>
 	</servlet>
 	
-<!--  -->
+
    <servlet>
       <servlet-name>MultiCheck01</servlet-name>
       <servlet-class>jw02.MultiCheck01</servlet-class>
@@ -69,7 +69,87 @@
       <servlet-name>Login</servlet-name>
       <servlet-class>jw04.Login</servlet-class>
    </servlet>
-<!--  -->
+
+   <servlet>
+      <servlet-name>LoginBean</servlet-name>
+      <servlet-class>jw04.LoginBean</servlet-class>
+   </servlet>
+    
+
+ <servlet>
+     <servlet-name>LoginBeanVODao</servlet-name>
+     <servlet-class>jw04.LoginBeanVODao</servlet-class>
+ </servlet>
+
+ <servlet>
+     <servlet-name>LoginBeanPool</servlet-name>
+     <servlet-class>jw04.LoginBeanPool</servlet-class>
+ </servlet>
+ 
+ <!--  -->
+
+  <servlet>
+     <servlet-name>LoginBeanDataSource</servlet-name>
+     <servlet-class>jw04.LoginBeanDataSource</servlet-class>
+ </servlet>
+ 
+  <servlet-mapping>
+    <servlet-name>LoginBeanDataSource</servlet-name>
+    <url-pattern>/LoginBeanDataSource</url-pattern>
+</servlet-mapping> 
+ 
+ <!--  -->
+ 
+ <servlet-mapping>
+    <servlet-name>LoginBeanPool</servlet-name>
+    <url-pattern>/LoginBeanPool</url-pattern>
+</servlet-mapping> 
+ 
+
+<servlet>
+		<servlet-name>LoginBeanInitParam</servlet-name>
+		<servlet-class>jw04.LoginBeanInitParam</servlet-class>
+		<init-param>
+		<param-name>jdbcDriver</param-name>
+		<param-value>oracle.jdbc.driver.OracleDriver</param-value>
+		</init-param>
+
+		<init-param>
+		<param-name>jdbcURL</param-name>
+		<param-value>jdbc:oracle:thin:@127.0.0.1:1521:xe</param-value>
+		</init-param>
+
+		<init-param>
+		<param-name>jdbcUser</param-name>
+		<param-value>scott</param-value>
+		</init-param>
+
+		<init-param>
+		<param-name>jdbcPasswd</param-name>
+		<param-value>tiger</param-value>
+		</init-param>
+
+	</servlet>
+<!--  -->   
+
+	<servlet-mapping>
+		<servlet-name>LoginBeanInitParam</servlet-name>
+		<url-pattern>/LoginBeanInitParam</url-pattern>
+	</servlet-mapping>
+
+  
+  
+<servlet-mapping>
+    <servlet-name>LoginBeanVODao</servlet-name>
+    <url-pattern>/LoginBeanVODao</url-pattern>
+</servlet-mapping> 
+
+   <servlet-mapping>
+      <servlet-name>LoginBean</servlet-name>
+      <url-pattern>/LoginBean</url-pattern>
+   </servlet-mapping>
+
+
    <servlet-mapping>
       <servlet-name>Login</servlet-name>
       <url-pattern>/Login</url-pattern>
@@ -142,5 +222,10 @@
 	</servlet-mapping>
 
 	<!-- http://217.0.0.1:8080/edu/FirstServlet -->
+	<resource-ref>
+			<res-ref-name>jdbc/ora</res-ref-name>
+			<res-type>javax.sql.DataSource</res-type>
+			 <res-auth>Container</res-auth>
+	</resource-ref>
 
 </web-app>
