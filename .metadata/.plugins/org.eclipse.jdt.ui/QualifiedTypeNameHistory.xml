@@ -37,4 +37,7 @@
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="jw05.UserVO"/>
+    <fullyQualifiedTypeName name="org.apache.tomcat.dbcp.dbcp2.datasources.PerUserPoolDataSource"/>
+    <fullyQualifiedTypeName name="jw05.UserDataSourceDao"/>
 </qualifiedTypeNameHistroy>

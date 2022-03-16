@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.dbcp.dbcp2.datasources.PerUserPoolDataSource;
+
 //Servlet / JDBC / DataSource(Connection Pool) / Session 이용 Login 처리
 
 @WebServlet("/loginBeanDataSourceSession")
@@ -43,7 +45,33 @@ public class loginBeanDataSourceSession extends HttpServlet {
 		// http://127.0.0.1:8080/edu/LoginBeanDataSourceSession 입력한 경우
 		// 2. req.getParameter("id")의 값 ==> null
 		
-		//==> 
+		//==> 1, 2인경우 DB접근 불필요 :: 입력 값의 유효성을 check하는 if문.
+		if ( !(id == null || id.equals(""))) {
+		// UserVa intance 생성 및 Client Form Data 전달(Binding)
+			userVO = new UserVO();
+			userVO.setId(id);
+			userVO.setPwd(pwd);
+			
+			//Db접근 Data 검색 비교 UserVo.active true / false 변경
+			UserDataSourceDao userDataSourceDao = new UserDataSourceDao();
+			userDataSourceDao.getUser(userVO);
+		}
+		out.println("<html><head></head>");
+		out.println("<body>");
+		out.println("<h2> Login 화면 </h2>");
+		
+		if( userVO != null && userVO.isActive()) {
+			out.println(userVO.getId() + "님 환영합니다.");
+			//Login이 정상적으로 이루어진경우
+			//::Session에 로그인 정보로 userVO instance저장.
+			session.setAttribute("userVO", userVO);
+		}else {
+			out.println("Login 실패! id, pwd를 확인하세요!!");
+		}
+		
+		out.println("<p><p><a href = '/edu/jw05/loginBeanDataSourceSession.html'> 뒤로 </a>");
+		out.println("</body>");
+		out.println("</html>");
 		
 	}
 
