@@ -86,19 +86,131 @@
      <servlet-class>jw04.LoginBeanPool</servlet-class>
  </servlet>
  
- <!--  -->
+
 
   <servlet>
      <servlet-name>LoginBeanDataSource</servlet-name>
      <servlet-class>jw04.LoginBeanDataSource</servlet-class>
  </servlet>
  
+
+
+   <servlet>
+     <servlet-name>CookeWriterToClient</servlet-name>
+     <servlet-class>jw05.CookeWriterToClient</servlet-class>
+ </servlet>
+ 
+<servlet>
+     <servlet-name>CookieReaderToServer</servlet-name>
+     <servlet-class>jw05.CookieReaderToServer</servlet-class>
+ </servlet>
+
+
+
+<servlet>
+     <servlet-name>SessionUseCookieOne</servlet-name>
+     <servlet-class>jw05.SessionUseCookieOne</servlet-class>
+ </servlet>
+ 
+ <servlet>
+     <servlet-name>SessionUseCookieTwo</servlet-name>
+     <servlet-class>jw05.SessionUseCookieTwo</servlet-class>
+ </servlet>
+
+    
+  <servlet>
+     <servlet-name>LoginBeanDataSourceSession</servlet-name>
+     <servlet-class>jw05.LoginBeanDataSourceSession</servlet-class>
+ </servlet>  
+
+
+  <servlet>
+     <servlet-name>ServletSynchronized</servlet-name>
+     <servlet-class>jw05.ServletSynchronized</servlet-class>
+ </servlet>  
+<!--  -->
+  <servlet>
+     <servlet-name>Make405Error</servlet-name>
+     <servlet-class>jw05.Make405Error</servlet-class>
+ </servlet>
+ 
+   <servlet>
+     <servlet-name>MakeNullPointerException</servlet-name>
+     <servlet-class>jw05.MakeNullPointerException</servlet-class>
+ </servlet>
+ 
+ 
+    <servlet>
+     <servlet-name>NullErrorDisplay</servlet-name>
+     <servlet-class>jw05.NullErrorDisplay</servlet-class>
+ </servlet>
+ 
+ 
+ 
+  <servlet-mapping>
+    <servlet-name>NullErrorDisplay</servlet-name>
+    <url-pattern>/NullErrorDisplay</url-pattern>
+</servlet-mapping> 
+ 
+ 
+  <servlet-mapping>
+    <servlet-name>MakeNullPointerException</servlet-name>
+    <url-pattern>/MakeNullPointerException</url-pattern>
+</servlet-mapping> 
+ 
+ 
+  <servlet-mapping>
+    <servlet-name>Make405Error</servlet-name>
+    <url-pattern>/Make405Error</url-pattern>
+</servlet-mapping> 
+<!--  -->
+ <servlet-mapping>
+    <servlet-name>ServletSynchronized</servlet-name>
+    <url-pattern>/ServletSynchronized</url-pattern>
+</servlet-mapping> 
+
+ 
+ <servlet-mapping>
+    <servlet-name>LoginBeanDataSourceSession</servlet-name>
+    <url-pattern>/LoginBeanDataSourceSession</url-pattern>
+</servlet-mapping> 
+
+
+ 
+ 
+ <servlet-mapping>
+    <servlet-name>SessionUseCookieTwo</servlet-name>
+    <url-pattern>/SessionUseCookieTwo</url-pattern>
+</servlet-mapping> 
+ 
+ 
+<servlet-mapping>
+    <servlet-name>SessionUseCookieOne</servlet-name>
+    <url-pattern>/SessionUseCookieOne</url-pattern>
+</servlet-mapping> 
+ 
+
+ <servlet-mapping>
+    <servlet-name>CookieReaderToServer</servlet-name>
+    <url-pattern>/CookieReaderToServer</url-pattern>
+</servlet-mapping> 
+ 
+ 
+   <servlet-mapping>
+    <servlet-name>CookeWriterToClient</servlet-name>
+    <url-pattern>/CookeWriterToClient</url-pattern>
+</servlet-mapping> 
+ 
+
+ 
+ 
+ <!--  --> 
   <servlet-mapping>
     <servlet-name>LoginBeanDataSource</servlet-name>
     <url-pattern>/LoginBeanDataSource</url-pattern>
 </servlet-mapping> 
  
- <!--  -->
+
  
  <servlet-mapping>
     <servlet-name>LoginBeanPool</servlet-name>
@@ -130,7 +242,7 @@
 		</init-param>
 
 	</servlet>
-<!--  -->   
+  
 
 	<servlet-mapping>
 		<servlet-name>LoginBeanInitParam</servlet-name>
@@ -227,5 +339,15 @@
 			<res-type>javax.sql.DataSource</res-type>
 			 <res-auth>Container</res-auth>
 	</resource-ref>
+	
+ <error-page>
+  <error-code>405</error-code>
+  <location>/jw05/405ErrorDisplay.html</location>
+ </error-page>
+ 
+ <error-page>
+ 	<exception-type>java.lang.NullPointerException</exception-type>
+ 	<location>/NullErrorDisplay</location>
+ </error-page>
 
 </web-app>
