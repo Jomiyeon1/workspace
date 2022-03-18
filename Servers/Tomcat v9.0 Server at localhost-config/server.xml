@@ -156,23 +156,9 @@
     
      
      
-     <Context docBase="edu" path="/edu" reloadable="true" source="org.eclipse.jst.jee.server:edu">
      
-     <Resource
-		            name="jdbc/ora"
-		            type="javax.sql.DataSource"
-		            driverClassName="oracle.jdbc.driver.OracleDriver"
-		            password="tiger"
-		            maxIdle="10"
-		            maxWait="5000"
-		            validationQuery="select * from tab"
-		            username="scott"
-		            url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
-		            maxActive="100"/>
      
-     </Context>
-     
-     </Host>
+     <Context docBase="edu" path="/edu" reloadable="true" source="org.eclipse.jst.jee.server:edu"/></Host>
     </Engine>
   </Service>
 </Server>
