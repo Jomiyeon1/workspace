@@ -10,16 +10,18 @@
  - UserVO 객체 유무 및 UserVO의 avtive값 true/false 판단
  -->
  
- <% UserVO userVo = (UserVO)session.getAttribute("userVO"); %>
+ <%  UserVO userVO=(UserVO)session.getAttribute("userVO"); %>
  <!-- #.미로그인한 회원 -->
 <% if(userVo == null || !userVO.isActive()){ %>
 	<jsp.forward page = "logon.jap" />
+<!--home2번째 문단  -->     <%--<jsp:forward page="logon.jsp"/> --%>
+<!--home2번째 문단  --><%--//} --%>
 <% } %>
 
 <!--  로그인한 회원  -->
 
 <html>
-<head> </head>
+<head> <meta charset="EUC-KR"> </head>
 <body>
 <p> Simple Model2 Examples</p>
 <p> 환영합니다. : <%= userVO.getUserId() %> 님 </p>
