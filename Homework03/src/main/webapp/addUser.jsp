@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"%>
 <%@page import="jw.common.user.dao.UserDao" %>
 <%@page import="jw.common.user.vo.UserVO" %>
-<%@page import="java.io.PrintWriter" %>
 
 
 <%
 		request.setCharacterEncoding("EUC_KR");
 		response.setContentType("text/html;charset=EUC_KR");
-		PrintWriter out = response.getWriter();
 		
 		//client에서 넘어온 값을 받자.
 		String name = request.getParameter("name");
@@ -47,14 +45,14 @@
        
 		<% if( userVO.isActive() ){ %>
             <%= userVO.getName()%>님 환영합니다.<br/>
-            <%= requset.getSession(true).setAttribute("userVO", userVO);%>
+            <% request.getSession(true).setAttribute("userVO", userVO);%>
             
         <% }else{%>
            다시가입해 주세요.<br/>
        <% } %>
 
 		<p><p><a href='/Homework03/findUser.html'>내정보보기(id 입력)</a>
-		<p><p><a href='/Homework03/FindUser'>내정보보기(session 사용)</a>
+		<p><p><a href='/Homework03/findUser.jsp'>내정보보기(session 사용)</a>
 
 
 </body>
