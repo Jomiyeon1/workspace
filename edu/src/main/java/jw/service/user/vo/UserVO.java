@@ -8,7 +8,16 @@ public class UserVO {
 	private String id;
 	private String pwd;
 	private boolean active;
+	private int no;
 	
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
 	public UserVO() {
 	}
 
@@ -38,6 +47,6 @@ public class UserVO {
 
 	@Override
 	public String toString() {
-		return "UserVo [ id = " + id + ", pwd = " + pwd +", active = " + active + " ]";
+		return "UserVo [ id = " + id + ", pwd = " + pwd +", active = " + active + " +, no="+  no +"]";
 	}
 }

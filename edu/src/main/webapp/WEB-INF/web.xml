@@ -346,7 +346,7 @@
  </error-page>
  
  <error-page>
- 	<exception-type>java.lang.Exception</exception-type>
+ 	<exception-type>java.lang.NullPointerException</exception-type>
  	<location>/NullErrorDisplay</location>
  </error-page>
 

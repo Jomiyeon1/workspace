@@ -51,11 +51,17 @@ public class AddUser extends HttpServlet {
         // insert 유무에 따라...
 		if( userVO.isActive() ){
             out.println(userVO.getName()+"님 환영합니다.<br/>");
+            //////////////////Session 사용위해 추가된 부분/////////////////////////////////
+            //==> 회원가입완료되면... userVO instance session 에 저장
+            req.getSession(true).setAttribute("userVO", userVO);
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
         }else{
             out.println("다시가입해 주세요.<br/>");
         }
 
-		out.println("<p><p><a href='/Homework01/findUser.html'>내정보보기(id 입력)</a>");
+		out.println("<p><p><a href='/Homework02/findUser.html'>내정보보기(id 입력)</a>");
+		out.println("<p><p><a href='/Homework02/FindUser'>내정보보기(session 사용)</a>");
 
 		out.println("</boyd>");
 		out.println("</html>");

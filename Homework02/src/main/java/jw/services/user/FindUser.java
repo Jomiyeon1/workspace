@@ -22,41 +22,30 @@ public class FindUser extends HttpServlet {
 		req.setCharacterEncoding("EUC_KR");
 		res.setContentType("text/html;charset=EUC_KR");
 		PrintWriter out = res.getWriter();
-		//Session 생성===========================================
-		HttpSession session = req.getSession(true);
-		System.out.println("==============Session 생성 완료");
+		
 
 		// client에서 넘어온 값을 받자.
 		String name = req.getParameter("name");
+		
+		if(name == null){
+			//==>  Session에 저장된 userVO instance 의 id 사용
+			HttpSession session = req.getSession(true);
+			name =  ( (UserVO)session.getAttribute("userVO")).getName();
+		}
 
 		UserDAO bean = new UserDAO();
 		bean.findUser(name);
 
-		//Session 저장하기
-	
-//		Cookie[] cookies = req.getCookies();
-//		if (cookies != null) {
-//			for(int i = 0; i < cookies.length; i++)
-//			System.out.println("\n cookie에 저장된 정보 :");
-//			System.out.println(cookies[i].getName() + " : " + cookies[i].getValue());
-//			
-//		}
-
 		//session이 있다면? 값을 불러오자
 		
+		
+//		if(session != null) {
+//		userVO = (UserVO) session.getAttribute("UserVO");
+//		}
 		
 		// DB에 접근하는 UserDAO를 이용 회원정보 select
 		UserVO userVO = new UserVO();
 		userVO = bean.findUser(name);
-//		if(session != null) {
-//		userVO = (UserVO) session.getAttribute("UserVO");
-//		}
-		if(session.isNew()) {
-			session.setAttribute("FindUser", userVO);
-			System.out.println("============session 저장완료");
-			
-			
-		}
 		
 		out.println("<html>");
 		out.println("<body>");
@@ -66,14 +55,15 @@ public class FindUser extends HttpServlet {
 		
 	//	if( userVO.isActive()){
 			
-		
+		if(userVO != null) {
 		out.println("이름 : " + userVO.getName());
 		out.println("성별 : " + userVO.getGender());
 		out.println("생년월일 : " + userVO.getYear() + "/" + userVO.getMonth() + "/" + userVO.getDay() );
 		out.println("전화번호 : " + userVO.getNum() );
 		out.println("주소 : " + userVO.getAddr());
-		out.println("JSESSIONID = " + session.getId());
-
+		}else {
+			out.println(name+"에 해당하는 정보는 없습니다.<br/>");
+		}
 		
 				
 	//	}else {
@@ -81,12 +71,6 @@ public class FindUser extends HttpServlet {
 	//		out.println("회원아닙니다.");
 	//	}
 		// 확인하기
-		
-
-		
-		
-		
-		
 
 		out.println("</body>");
 		out.println("</html>");
