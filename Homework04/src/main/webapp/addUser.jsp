@@ -53,6 +53,7 @@
 
 		<p><p><a href='/Homework04/findUserView.jsp'>내정보보기(id 입력)</a>
 		<p><p><a href='/Homework04/findUser.jsp'>내정보보기(session 사용)</a>
+		<p><p><a href='/Homework04/updateUserView.jsp'>내정보수정</a>
 
 
 </body>

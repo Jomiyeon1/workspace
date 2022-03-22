@@ -1,7 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+
 <html>
+<head>
+</head>
 <body>
 
- <h2>회원정보 조회</h2><br/>
+<h2>회원정보 수정</h2><br/>
  이름을 입력하세요.
  
 
@@ -18,6 +23,6 @@
 		</table>
 		
 	</form>	
-	
+
 </body>
 </html>
