@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 import jw.common.dao.AbstractDao;
 import jw.service.user.vo.UserVO;
@@ -59,8 +60,8 @@ public class UserDao extends AbstractDao {
 		return insertResult;
 	}
 
-	public ArrayList<UserVO> getUserList() {
-		ArrayList<UserVO> arrayList = new ArrayList<UserVO>();
+	public List<UserVO> getUserList() {
+		List<UserVO> arrayList = new ArrayList<UserVO>();
 		Connection con = null;
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;

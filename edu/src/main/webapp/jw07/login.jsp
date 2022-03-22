@@ -1,36 +1,38 @@
-<%@ page contentType="text/html;charset=EUC-KR" %>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<%@page import="jw.service.user.vo.UserVO"%>
+<%@page import="jw.service.user.dao.UserDao"%>
+
 <%
-request.setCharacterEncoding("EUC_KR");
-response.setContentType("text/html;charset=EUC_KR");
-
-String id = request.getParameter("id");
-String pwd = request.getParameter("pwd");
-
-jw04.UserVO userVO = (jw04.UserVO)session.getAttribute("userVO");
-System.out.println("session에 저장된 USERVOUserDao_"+userVO);
-
-if( UserDao_ull ||id.equals(""))){
-	userVO = new jw04.UserVO();
+if (request.getMethod().equals("GET")) {%>
+<jsp:forward page="login.html" />
+<%}%>
+<%
+	request.setCharacterEncoding("EUC_KR");
+	String id = request.getParameter("id");
+	String pwd = request.getParameter("pwd");
+	
+	UserVO userVO = new UserVO();
 	userVO.setId(id);
 	userVO.setPwd(pwd);
 	
-	jw04.UserDataSourceDao userDataSourceDao =new jw04.UserDataSourceDao();
-	userDataSourceDao.getUser(userVO);
-}
+	UserDao userDAO = new UserDao();
+	userDAO.getUser(userVO);
 %>
+<!DOCTYPE html>
 <html>
 <head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
 </head>
 <body>
-<h2> Login 화면</h2>
-<% if(userVO != null && userVO.isActive()) { %>
- <%= userVO.getId() %> 님 환영합니다.
- <%
- session.setAttribute("userVO", userVO);%>
- <%}else{ %>
- 	Login 실패 id,pwd를 확인하세요.
- 	<%} %>
-
-<p></p><a href='edu/jw07/loginBeanDataSourceSessionJSP.html'>뒤로</a>
+	<h2>Login화면</h2>
+	<%
+	if (userVO.isActive()) {	%>
+	<%=id%>님 환영합니다.
+	<%	session.setAttribute("userVO", userVO);	%>
+	<%	} else {	%>
+	id,pwd를 확인하세요
+	<%	}	%>
 </body>
 </html>

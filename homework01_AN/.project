@@ -3,7 +3,6 @@
 	<name>homework01_AN</name>
 	<comment></comment>
 	<projects>
-		<project>ojdbc14</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

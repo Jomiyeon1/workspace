@@ -51,7 +51,7 @@ try{
 <h2>Login 화면</h2>
 	<% if(fromDbId != null && fromDbPwd != null
 	&&fromDbId.equals(id) && fromDbPwd.equals(pwd)){ %>>
-		<%= id %> 님 환영합니다.
+		<%= id %> 님 환영합니사.
 		<%} else{ %>
 			id,pwd를 확인하세요.
 			<%} %>

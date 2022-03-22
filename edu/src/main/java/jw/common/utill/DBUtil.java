@@ -40,7 +40,7 @@ public class DBUtil {
 		}finally {
 			if (con==null) {
 				con = getConnection("oracle.jdbc.driver.OracleDriver",
-						"jdbc:oracle.thin:@127.0.0.1:1521:xe","scott","tiger");
+						"jdbc:oracle:thin:@127.0.0.1:1521:xe","scott","tiger");
 			}
 			return con;
 		}
