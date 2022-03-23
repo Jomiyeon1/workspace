@@ -151,4 +151,41 @@ public class UserDao extends AbstractDao {
 			}
 			return vo;
 	}
+		
+		public void updateUser(UserVO userVO) {
+			UserVO vo = new UserVO();
+			
+			Connection con = null;
+			PreparedStatement pStmt = null;
+			ResultSet rs = null;
+			
+			try {
+				
+				con = OracleConnectionPool.getInstance().getConnection();
+				System.out.println("Connection 완료");
+				// 2단계 Statement
+				pStmt = con.prepareStatement("update users1 set name = ?, gender = ?, year = ?, month = ?, day = ?, num = ?, addr = ? "
+											+ "where name = ?");
+				pStmt.setString(1, userVO.getName());
+				pStmt.setString(2, userVO.getGender());
+				pStmt.setString(3, userVO.getYear());
+				pStmt.setString(4, userVO.getMonth());
+				pStmt.setString(5, userVO.getDay());
+				pStmt.setString(6, userVO.getNum());
+				pStmt.setString(7, userVO.getAddr());
+				pStmt.setString(8, userVO.getName());
+			
+				// 3단계 ResultSet
+				rs = pStmt.executeQuery();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}  finally {
+				this.close(con, pStmt, rs);
+
+			}
+			
+			
+			
+		}
 }
