@@ -57,11 +57,37 @@
 	<util:properties id="userProperties" location="classpath:config/userservice03.properties"/>
 
 	<bean id="user09" class="spring.service.domain.User">
-	 <property name="age" value="#{userProperties['user.age]}"/>
-	 <property name="userId" value="#{userProperties['user.userId]}"/>
-	 <property name="password" value="#{userProperties['user.password]}"/>
+	 <property name="age" value="#{userProperties['user.age']}"/>
+	 <property name="userId" value="#{userProperties['user.userId']}"/>
+	 <property name="password" value="#{userProperties['user.password']}"/>
 	</bean>
 	
 	<!-- 아래의 user11 instance에서 SpEL을 활용하기 위한 임시로 만든 instance -->
+	<bean id="user10" class="spring.service.domain.User">
+   	  <property name="age" value="100"/>
+	 <property name="userId" value="100유저"/>
+	 <property name="password" value="100100"/>
+   	</bean>
+	
+	<!-- SpEL를 사용하여 다른 instance의 Filed값(property)에 쉽게 접근이 가능
+		 SpEL을 활용하면 programming code level까지도 Meta-data화 할 수 있는 방법을 제시
+		 ==> user11.setAge(user10.getAge()) -->
+	<bean id="user11" class="spring.service.domain.User">
+	 <property name="age" value="#{user10.age}"/>
+	 <property name="userId" value="#{user10.userId}"/>
+	 <property name="password" value="#{user10.password}"/>
+	</bean>
+	
+	<!-- 아래의 user12 instance에서 SpEL을 활용하기 위한 임시로 만든 instance -->
+	<bean id="client" class="spring.service.domain.Client" />
+	
+	<!-- SpEL를 사용하여 다른 instance의 Filed값(property)에 쉽게 접근이 가능
+		 SpEL을 활용하면 programming code level까지도 Meta-data화 할 수 있는 방법을 제시
+		 ==> user11.setUserId(client.getInfo()[0]) -->
+	<bean id="user12" class="spring.service.domain.User">
+	 <property name="age" value="#{client.age}"/>
+	 <property name="userId" value="#{client.info[0]}"/>
+	 <property name="password" value="#{client.info[1]}"/>
+	</bean>
 	
 </beans>

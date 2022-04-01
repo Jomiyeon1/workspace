@@ -5,6 +5,8 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.FileSystemResource;
+
+import spring.service.domain.User;
 public class UserTestApp01 {
 
 	public static void main(String[] args) {
@@ -19,7 +21,7 @@ public class UserTestApp01 {
 		//- BeanFactory는 getBean()호출시 Bean생성(lazy loading) <== console 확인할 것
 		BeanFactory factory =
 				new XmlBeanFactory( new FileSystemResource
-																	("./src/main/resources/config/diceservice.xml") );
+																	("./src/main/resources/config/userservice01.xml") );
 		//2. ApplicationContext이용 xml에선언적, 서술적 기술된 instance생성 및 의존성 주입
 		//- ApplicationContext는 모든 인스턴스를 pre-loading <== console 확인할 것
 //		ApplicationContext factory = new ClassPathXmlApplicationContext("/config/userserivice01.xml");
