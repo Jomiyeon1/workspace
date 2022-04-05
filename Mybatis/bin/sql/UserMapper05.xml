@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--	
+	UserMapper.xml :: SQL 를 갖는 MetaData 
+	
+	- MyBatis Framework 은 XML MetaData 를 사용 SQL구문을 관리
+	  (SQL은 xml 을 통해 적절히 캡슐화 되어 애플리케이선 외부로 분리함)
+	- SQL문의 입력(?) / 출력(?)을 매핑한다.  <== 아래의 select element 참조
+ -->		
+ 					
+<mapper namespace="UserMapper05">
+
+	<insert id="addUser"  parameterType="user">
+	INSERT
+	INTO users(user_id, user_name, password, age, grade, reg_date)
+	VALUES(	#{userId},
+			#{userName},
+			#{password},
+			#{age:INTEGER},
+			<if test="grade==0">null</if>
+			<if test="grade!=0">#{grade}</if>,
+			#{regDate:DATE} )
+	</insert>
+	
+	<select 	id="getUser01"  parameterType="string" resultType="user">
+		SELECT
+		user_id 			AS userId,
+		user_name 			AS userName,
+		password 			AS password,
+		age 				AS age,
+		grade				AS grade,
+		reg_date 			AS regDate
+		FROM users   	
+		WHERE user_id = #{value}										
+  	</select>
+  	
+  	<resultMap  id="userSelectMap" type="user">
+  		<result property="userId" column="user_id" jdbcType="VARCHAR"/>
+  		<result property="userName" column="user_name" jdbcType="VARCHAR"/>
+  		<result property="password" column="password" jdbcType="VARCHAR"/>
+  		<result property="age" column="age" jdbcType="INTEGER"/>
+  		<result property="grade" column="grade" jdbcType="NUMERIC"/>
+  		<result property="regDate" column="reg_date" jdbcType="DATE"/>
+  	</resultMap>
+  	
+  	<select id="getUser02" parameterType="string" resultMap="userSelectMap">
+  	  SELECT
+  	  user_id, user_name, password, age, grade, reg_date
+  	  FROM users
+  	  WHERE user_id = #{value}
+  	</select>
+  	
+  	<select id="getUserList" resultMap="userSelectMap">
+  	  SELECT
+  	  user_id, user_name, password, age, grade, reg_date
+  	  FROM users
+  	</select>
+  	
+  	<delete id="removeUser" parameterType="java.lang.String">
+  		DELETE
+  		FROM users
+  		WHERE user_id = #{value}
+  	</delete>
+  	
+	
+</mapper>
