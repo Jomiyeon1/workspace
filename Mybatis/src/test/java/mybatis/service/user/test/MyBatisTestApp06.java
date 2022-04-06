@@ -1,7 +1,6 @@
 package mybatis.service.user.test;
 
 import mybatis.service.domain.User;
-import mybatis.services.user.test.SqlSessionFactoryBean;
 
 import org.apache.ibatis.session.SqlSession;
 

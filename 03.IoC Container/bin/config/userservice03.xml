@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- <beans 	xmlns="http://www.springframework.org/schema/beans"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="http://www.springframework.org/schema/beans
+													  http://www.springframework.org/schema/beans/spring-beans.xsd">												 
+											
+	대치변수의 형태 ${}로 접근가능하다. :: JSP EL와 유사
+	<bean id="user08" class="spring.service.domain.User">
+	 <property name="age" value="${user.age}"/>
+	 <property name="userId" value="${user.userId}"/>
+	 <property name="password" value="${user.password}"/>
+	</bean>
+	=======================================================================
+	==> Spring에서 제공되는 Bean사용은 <bean> element 사용 이외에
+	==> xml 네임스페이스를 사용하는 방법도 있다. 
+	
+	<context:property-placeholder location="classpath:config/userservice02.properties" />  
+	
+	<bean> element를 사용 PropertyPlaceholderConfingurer 이용한 것과 동일
+	-->
+	
+	<!-- * Spring 3.x에 추가된 SpCL(Expression Language)
+		   SpEL notation ${} :: JSP EL과 비교하여 이해 ${}
+		 * SpEL 사용시 아래와 같이 네임스페이스를 추가
+	 -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
+	   					   
+	   					   http://www.springframework.org/schema/context
+	   					   http://www.springframework.org/schema/context/spring-context.xsd
+	   					   
+	   					   http://www.springframework.org/schema/util
+	   					   http://www.springframework.org/schema/util/spring-util.xsd" >
+	   					   
+	<!-- 위의 주석 참조 -->
+	<context:property-placeholder location="classpath:config/userservice02.properties"/>
+	<!-- 구분자를 이용 다수의 외부 properties 파일을 등록 가능
+	<context:property-placeholder location="classpath:config/userservice02.properties,
+											classpath:config/bbsservice.properties:/> -->
+											
+	<bean id="user08" class="spring.service.domain.User">
+	 <property name="age" value="${user.age}"/>
+	 <property name="userId" value="${user.userId}"/>
+	 <property name="password" value="${user.password}"/>
+	</bean>
+
+	<!-- Sprng 3.x 지원하는 SpEl의 사용은 아래와 같이 properties 파일을 등록 -->
+	<util:properties id="userProperties" location="classpath:config/userservice03.properties"/>
+
+	<bean id="user09" class="spring.service.domain.User">
+	 <property name="age" value="#{userProperties['user.age']}"/>
+	 <property name="userId" value="#{userProperties['user.userId']}"/>
+	 <property name="password" value="#{userProperties['user.password']}"/>
+	</bean>
+	
+	<!-- 아래의 user11 instance에서 SpEL을 활용하기 위한 임시로 만든 instance -->
+	<bean id="user10" class="spring.service.domain.User">
+   	  <property name="age" value="100"/>
+	 <property name="userId" value="100유저"/>
+	 <property name="password" value="100100"/>
+   	</bean>
+	
+	<!-- SpEL를 사용하여 다른 instance의 Filed값(property)에 쉽게 접근이 가능
+		 SpEL을 활용하면 programming code level까지도 Meta-data화 할 수 있는 방법을 제시
+		 ==> user11.setAge(user10.getAge()) -->
+	<bean id="user11" class="spring.service.domain.User">
+	 <property name="age" value="#{user10.age}"/>
+	 <property name="userId" value="#{user10.userId}"/>
+	 <property name="password" value="#{user10.password}"/>
+	</bean>
+	
+	<!-- 아래의 user12 instance에서 SpEL을 활용하기 위한 임시로 만든 instance -->
+	<bean id="client" class="spring.service.domain.Client" />
+	
+	<!-- SpEL를 사용하여 다른 instance의 Filed값(property)에 쉽게 접근이 가능
+		 SpEL을 활용하면 programming code level까지도 Meta-data화 할 수 있는 방법을 제시
+		 ==> user11.setUserId(client.getInfo()[0]) -->
+	<bean id="user12" class="spring.service.domain.User">
+	 <property name="age" value="#{client.age}"/>
+	 <property name="userId" value="#{client.info[0]}"/>
+	 <property name="password" value="#{client.info[1]}"/>
+	</bean>
+	
+</beans>
