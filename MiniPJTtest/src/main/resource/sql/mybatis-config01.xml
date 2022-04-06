@@ -43,7 +43,7 @@
   <!-- SQL Definition :: file include -->
   <mappers>
 
-    <mapper resource="sql/UserMapper10.xml"/>
+    <mapper resource="sql/UserMapper.xml"/>
     
   </mappers>
 

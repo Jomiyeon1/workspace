@@ -53,4 +53,5 @@
     <fullyQualifiedTypeName name="february.miyeon28_.CellPhone01"/>
     <fullyQualifiedTypeName name="spring.service.lifecycle.LifeCycle02"/>
     <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="org.mybatis.spring.SqlSessionFactoryBean"/>
 </qualifiedTypeNameHistroy>

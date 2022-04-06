@@ -1,56 +1,48 @@
 package mybatis.service.domain;
 
-import java.io.Serializable;
-import java.sql.Timestamp;
+import java.sql.Date;
 
-/*
- * FileName : User.java  
- * ㅇ User 의 정보를 갖는 Value Object (도메인객체,비지니스객체)
- * ㅇ USERS TABLE 의 1개의 ROW 의 정보를 갖는다.  
-*/ 
-public class User implements Serializable {
 
+public class User {
+	
 	///Field
-    private String userId; 			// 회원 ID 
-    private String userName;		// 회원 이름 
-    private String password;     // 비밀번호 
-    private Integer age;    			// 나이 :: Integer wrapper class 사용 :: 추후 용도 확인  
-    private int grade;    				// 등급 :: int primitive 사용 :: :: 추후 용도 확인 
-    private Timestamp regDate	; // 가입일자 
-    //private Timestamp regDate	= new Timestamp(new Date().getTime()); // 가입일자
-    private boolean active; 
-    
-    ///Constructor
-    public User() {
+	private String userId;
+	private String userName;
+	private String password;
+	private String role;
+	private String ssn;
+	private String phone;
+	private String addr;
+	private String email;
+	private Date regDate;
+	/////////////// EL 적용 위해 추가된 Field ///////////
+	private String phone1;
+	private String phone2;
+	private String phone3;
+
+	
+	
+	///Constructor
+	public User(){
 	}
-    public User (	String userId, String userName,String password, 
-    							Integer age, int grade ) {
+	// user_id, user_name, password, cell_phone,    addr,   email
+	public User(String userId, String userName, String password, String phone, String addr, String email) {
+		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.password = password;
-		this.age = age;
-		this.grade = grade;
-	}    
+		this.phone = phone;
+		this.addr = addr;
+		this.email = email;
+	}
+	
+	///Method 
+	public String getUserId() {
+		return userId;
+	}
 
-	///Method (getter/setter)
-	public String getUserId(){
-		return this.userId;
-	}
-	public void setUserId( String userId ){
-	   this.userId= userId;
-	}
-	public String getPassword(){
-	   return this.password;
-	}
-	public void setPassword( String password ){
-	   this.password= password;
-	}
-	public Integer getAge() {
-		return age;
-	}
-	public void setAge(Integer age) {
-		//System.out.println("age : "+age);
-		this.age = age;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public String getUserName() {
 		return userName;
@@ -58,29 +50,68 @@ public class User implements Serializable {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public java.sql.Timestamp getRegDate() {
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public String getSsn() {
+		return ssn;
+	}
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+		/////////////// EL 적용 위해 추가 ///////////
+		if(phone != null && phone.length() !=0 ){
+			phone1 = phone.split("-")[0];
+			phone2 = phone.split("-")[1];
+			phone3 = phone.split("-")[2];
+		}
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public Date getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(java.sql.Timestamp regDate) {
+	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	public int getGrade() {
-		return grade;
+	/////////////// EL 적용 위해 추가된 getter Method ///////////
+	public String getPhone1() {
+		return phone1;
 	}
-	public void setGrade(int grade) {
-		//System.out.println("grade : "+grade);
-		this.grade = grade;
+	public String getPhone2() {
+		return phone2;
 	}
-	public void setActive(boolean active) {
-		this.active = active;
+	public String getPhone3() {
+		return phone3;
 	}
-	public boolean isActive() {
-		return active;
-	}
+
 	@Override
 	public String toString() {
-		return "User [userid=" + userId + ", userName=" + userName + ", password="
-				+ password + ", age=" + age + ", grade=" + grade+ ", active=" + active
-				+ ", regDate=" + regDate + "]";
+		return "UserVO : [userId] "+userId+" [userName] "+userName+" [password] "+password+" [role] "+ role
+			+" [ssn] "+ssn+" [phone] "+phone+" [email] "+email+" [regDate] "+regDate;
 	}
-}//end of class
+}
