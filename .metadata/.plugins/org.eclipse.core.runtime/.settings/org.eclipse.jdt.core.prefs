@@ -15,6 +15,7 @@ org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
 org.eclipse.jdt.core.compiler.problem.reportPreviewFeatures=warning
 org.eclipse.jdt.core.compiler.release=disabled
 org.eclipse.jdt.core.compiler.source=1.8
+org.eclipse.jdt.core.userLibrary.com.springsource.org.aspectj.weaver-1.6.8.RELEASE=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<userlibrary systemlibrary\="false" version\="2">\r\n\t<archive path\="C\:/z.utility/10.spring/3.0.5/org.aspectj/com.springsource.org.aspectj.weaver/1.6.8.RELEASE/com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar"/>\r\n</userlibrary>\r\n
 org.eclipse.jdt.core.userLibrary.commons-dbcp-1.4=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<userlibrary systemlibrary\="false" version\="2">\r\n\t<archive path\="C\:/z.utility/z.dependency/commons-dbcp-1.4/commons-dbcp-1.4.jar"/>\r\n</userlibrary>\r\n
 org.eclipse.jdt.core.userLibrary.commons-pool-1.6=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<userlibrary systemlibrary\="false" version\="2">\r\n\t<archive path\="C\:/z.utility/z.dependency/commons-pool-1.6/commons-pool-1.6.jar"/>\r\n</userlibrary>\r\n
 org.eclipse.jdt.core.userLibrary.jdbc-driver=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<userlibrary systemlibrary\="false" version\="2">\r\n\t<archive path\="C\:/z.utility/05.JDBC/driver/11gXE/ojdbc6.jar"/>\r\n</userlibrary>\r\n
