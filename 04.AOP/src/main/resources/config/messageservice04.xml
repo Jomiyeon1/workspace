@@ -12,6 +12,7 @@
 	class = "org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor">
 	<property name ="advice" ref="testAdvice" />
 	<property name="expression" value="execution(* *.getMessage(..))" />
+	<!-- pointcut 없어짐. -->
 	</bean>	
 	
 	<bean id="message" class="org.springframework.aop.framework.ProxyFactoryBean">

@@ -32,7 +32,16 @@ public class UserServiceImpl14 implements UserService{
 	//method
 		//회원정보 :: insert(회원가입)
 		public int addUser(User user)throws Exception{
-			return userDao.addUser(user);
+			int result = 0;
+			System.out.println(">>>>>>>>>>>>>>> 1번째 insert ===================");
+			result = userDao.addUser(user);
+			System.out.println(">>>>>>>>>>>>>>> 1번째 insert 결과 : "+result);
+			System.out.println(">>>>>>>>>>>>>>> 2번째 insert ===================");
+			result = userDao.addUser(user);
+			System.out.println(">>>>>>>>>>>>>>> 2번째 insert 결과 : "+result);
+			System.out.println(">>>>>>>>>>>>>>> 결과는 ???? =====================");
+			return 0;
+//			return userDao.addUser(user);
 		}
 		
 		//회원정보 :: select (회원정보를 검색)
