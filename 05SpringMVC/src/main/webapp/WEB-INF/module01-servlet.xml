@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- :: Client의 Request URI와 Controller을 연결시켜주는 HandlerMapping -->
+	<bean id="beanNameUrlMapping"
+		  class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+		  
+	  <!-- HandlerMapping을 여러개 설정가능, 우선순위 설정가능 -->
+	  <property name="order" value="0" />  
+	</bean>
+	
+	<!-- ::Client에 보여줄 Data(Model)랜더링 / view화면 Navigation하는 ViewResolver -->
+	<bean id="viewResolver"
+		  class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
+		  
+   <!-- ::Client의 요구사항을 처리할 Controller -->
+   <bean name="/module01.do" class="test.HelloSpringController" />
+	
+
+ 
+ </beans>

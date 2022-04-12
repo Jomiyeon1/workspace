@@ -158,7 +158,7 @@
      
      
      
-     </Host>
+     <Context docBase="06SpringAnnotationMVC" path="/06SpringAnnotationMVC" reloadable="true" source="org.eclipse.jst.jee.server:06SpringAnnotationMVC"/></Host>
     </Engine>
   </Service>
 </Server>
