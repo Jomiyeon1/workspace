@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script src="../javascript/jquery-2.1.4.js" type="text/javascript"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		
+		//$('form').css('color','red');
+		$('form[name]').css('color','red');
+		//==> []으로 추가정보를 줄 수 있다.
+		//==> 해당 코드의 의미는 form tag에 name값이 있는 form tag를 빨간색으로 변경.
+		
+		
+		//$($('form[name]')[0]).css('color','red');		
+		//$($('form[name]')[1]).css('color','red');		
+
+		
+		//$('form[name="test01"]').css('color','red');		
+		//$('form p').css('color','red');		
+		//$('form[name="test01"] p').css('color','red');		
+		//$('form[name="test01"] p, form[name="test02"] span').css('color','red');		
+		
+	});
+	
+</script>
+</head>
+<body>
+
+	<h1>javascript Framework : jQuery 학습</h1>
+	<h2>사용법(?)에 익숙해 지자</h2>
+
+	<form name="test01">
+		<p>jQuery 란 ?</p>
+	</form>
+
+	<div>
+		<p>javascript Framework</p>
+	</div>
+
+	<form name="test02">
+		<p>
+			Framework 이란 ? <span> 확장,재사용 가능한 Lib</span>
+		</p>
+	</form>
+
+</body>
+</html>
