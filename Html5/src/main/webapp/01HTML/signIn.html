@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    <h3>개인정보</h3>
+    <button type="button" onclick="alert">?</button>도움말
+    <table border="1">
+        <tr>
+            <td>이름(한글실명)</td>
+            <td><input type="text" name="name" /> <br/></td>
+            
+        </tr>
+
+        <tr>
+            <td>성별</td>
+            <td>
+                남자 <input type="radio" name="sex" value="male" checked />
+        여자 <input type="radio" name="sex" value="female"/> 
+            </td>
+            
+        </tr>
+
+        <tr>
+            <td>생년월일</td>
+            <td>
+                <span class="box">
+                    <input type="text" id="yy" class="int" maxlength="4" placeholder="">
+                </span>
+                년
+                <span class="box">
+                    <select id="mm">
+                        <option>선택</option>
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        <option value="05">5</option>
+                        <option value="06">6</option>
+                        <option value="07">7</option>
+                        <option value="08">8</option>
+                        <option value="09">9</option>                                    
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </span>
+                월
+                <span class="box">
+                    <select id="dd">
+                        <option>선택</option>
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        <option value="05">5</option>
+                        <option value="06">6</option>
+                        <option value="07">7</option>
+                        <option value="08">8</option>
+                        <option value="09">9</option>                                    
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+    
+    
+                    </select>
+                </span>
+                일
+                
+
+            </td>
+            
+        </tr>
+
+        <tr>
+            <td>최종학력</td>
+            <td>
+                <span class="box">
+                    <select >
+                        <option>선택하세요</option>
+                        <option value="초등학교">초등학교</option>
+                        <option value="중학교">중학교</option>
+                        <option value="고등학교">고등학교</option>
+                        <option value="대학교">대학교</option>
+                        <option value="대학원이상">대학원이상</option>
+                    </select>
+                </span>
+               
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>직업</td>
+            <td>
+                <span class="box">
+                    <select >
+                        <option>선택하세요</option>
+                        <option value="회사원">회사원</option>
+                        <option value="자영업">자영업</option>
+                        <option value="전문직">전문직</option>
+                        <option value="학생">학생</option>
+                        <option value="무직">무직</option>
+                    </select>
+                </span> 
+                소속
+                <input type="text" belong="belong" /> 
+            </td>
+            
+        </tr>
+
+        <tr>
+            <td>결혼여부</td>
+            <td>
+            미혼 <input type="radio" name="sex" value="male" checked />
+            기혼 <input type="radio" name="sex" value="female" />
+            자녀수
+            <span class="box">
+                <select >
+                    <option>선택</option>
+                    <option value="01">1</option>
+                    <option value="02">2</option>
+                    <option value="03">3</option>
+                    <option value="04">4</option>
+                    <option value="05">5</option>
+                    <option value="06">6</option>
+                    <option value="07">7</option>
+                    <option value="08">8</option>
+                    <option value="09">9</option>                                    
+                </select>
+            </span>  
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">연락처</td>
+            <td>
+            전화번호 
+            <input type="text"  style="width:50px;" name="num01" /> -
+            <input type="text" style="width:50px;" name="num01" /> -
+            <input type="text" style="width:50px;" name="num01" />
+            집 <input type="radio" name="number" value="home" checked />
+            직장 <input type="radio" name="number" value="work" />
+            </td>
+        </tr>
+        <tr>
+            
+            <td>
+                핸드폰&nbsp;&nbsp;&nbsp;
+
+                <input type="text"  style="width:50px;" name="num02" /> -
+                <input type="text" style="width:50px;" name="num02" /> -
+                <input type="text" style="width:50px;" name="num02" />
+                이동통신사
+                SKT <input type="radio" name="number" value="SKT" />
+                KTF <input type="radio" name="number" value="KTF" />
+                LGT <input type="radio" name="number" value="LGT" /> <br/>
+                전화번호나 휴대폰번호 2가지 중 하나는 반드시 입력하셔야합니다.</td>
+        </tr>
+        <tr>
+            <td>거주지 주소</td>
+            <td>
+            <input type="submit" value="국내"/>
+            <input type="submit" value="국외"/>
+            <input type="text" style="width:300px; name="address" /></td>
+        </tr>
+    </table>
+   
+    
+
+
+</body>
+</html>
